@@ -1,0 +1,8 @@
+it is not master it is main
+
+
+commands to push 
+git add .
+git status
+git commit -m "message"
+gir push origin main  (main line)
