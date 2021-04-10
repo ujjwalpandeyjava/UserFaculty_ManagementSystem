@@ -1,0 +1,72 @@
+.main-data {
+	height: 81vh;
+	width: 100%;
+	background-image: linear-gradient(111deg, rgb(64, 151, 147),
+		rgb(164, 70, 215), rgb(64, 151, 147));
+	box-shadow: inset 0px 0px 10px -3px black;
+}
+
+.form-outter {
+	max-width: 70%;
+	width: 60%;
+	height: 70%;
+	min-width: 300px;
+	padding: 10px;
+	background-image: linear-gradient(252deg, rgb(218 172 243),
+		rgb(113, 223, 218));
+	box-shadow: inset 0px 0px 10px -3px black;
+	/*border: 1px solid black;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+section {
+	display: block;
+	width: 100%;
+	padding: 13px 35px;
+}
+
+section>label {
+	max-width: 40%;
+	font-weight: normal;
+	font-size: x-large;
+	/*margin-left: 20px;*/
+	font-style: oblique;
+}
+
+section>input {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 3px 13px;
+	border-bottom: 1px solid blue;
+}
+
+section>input:focus {
+	border-bottom: 2px solid blue
+}
+
+input[type="submit"] {
+	background-color: #c9d0fc;
+	width: 40%;
+	border: 1px solid lime;
+	box-shadow: 0 0 4px lime;
+	padding: 4px 15px;
+	font-size: 1.25rem;
+	border-radius: 20px;
+	margin-left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid lime;
+	outline: none;
+}
+
+input[type="submit"]:hover {
+	background-color: lime;
+	color: black;
+}
+
+form>h2 {
+	font-weight: 500;
+	text-align: center;
+}

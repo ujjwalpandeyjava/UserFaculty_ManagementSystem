@@ -1,0 +1,138 @@
+@charset "ISO-8859-1";
+/*
+	Navigation bar and Footer Styling.
+*/
+* {
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+.bg-custom2 {
+	background-color: aqua;
+	color: yellow;
+}
+
+.main-data {
+	height: 93vh !important;
+	width: 100%;
+}
+
+.main-content {
+	min-height: 60vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	width: 100%;
+	padding: 1rem 3rem;
+}
+
+form .form-group {
+	padding: 2rem 0rem;
+}
+
+.add-shadow>div {
+	box-shadow: 1px 1px 3px black;
+}
+
+.bg-custom {
+	background: #a446d7;
+}
+
+.btn-custom {
+	/*background: #ef3bef;*/
+	background: white;
+}
+
+.navbar .nav-item .nav-link {
+	font-size: 1rem;
+	color: white;
+}
+
+body {
+	font-family: sans-serif;
+	margin: 0;
+	background: #fbfbfb;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 50px;
+}
+
+p {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+h4 {
+	text-align: center;
+	line-height: 80px;
+	font-weight: normal;
+}
+
+.masonry { /* Masonry container */
+	-webkit-column-count: 4;
+	-moz-column-count: 4;
+	column-count: 4;
+	margin: 1.5em;
+	padding: 0;
+	-moz-column-gap: 1.5em;
+	-webkit-column-gap: 1.5em;
+	column-gap: 1.5em;
+	font-size: .85em;
+}
+
+.item {
+	display: inline-table;
+	background: #fff;
+	padding: 1em;
+	margin: 0 0 1.5em;
+	width: 100%;
+	transition: 1s ease all;
+	-webkit-transition: 1s ease all;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-shadow: 2px 2px 4px 0 #ccc;
+}
+
+.item img {
+	max-width: 100%;
+	height: auto;
+}
+
+@media only screen and (max-width: 320px) {
+	.masonry {
+		-moz-column-count: 1;
+		-webkit-column-count: 1;
+		column-count: 1;
+	}
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+	.masonry {
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
+	}
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+	.masonry {
+		-moz-column-count: 3;
+		-webkit-column-count: 3;
+		column-count: 3;
+	}
+}
+
+@media only screen and (min-width: 1201px) {
+	.masonry {
+		-moz-column-count: 4;
+		-webkit-column-count: 4;
+		column-count: 4;
+	}
+}
