@@ -5,38 +5,85 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "UserDetails", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"userID", "uEmail"}))
+@Table
 public class UserDetails {
 
 	public UserDetails() {
+		super();
 	}
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userID;
 	@Column(nullable = false)
+	private String email;
+
+	@Column(nullable = false, length = 20)
 	private String firstName;
+
+	@Column(nullable = true, length = 20)
 	private String lastName;
+
 	@Column(nullable = false)
-	private String uEmail;
+	private String password;
+
+	@Column(nullable = true)
 	private int contactNumber;
+
 	@Column(nullable = false)
 	private String registraionDate;
-	private Address userAddress;
+
 	@Column(nullable = false)
 	private String userType;
-	public int getUserID() {
-		return userID;
+
+	@Column(nullable = true, length = 15)
+	private String houseNo;
+
+	@Column(nullable = true)
+	private String landMark;
+
+	@Column(nullable = true, length = 35)
+	private String city;
+
+	@Column(nullable = true)
+	private String state;
+
+	@Column(nullable = true)
+	private String pinCode;
+
+	
+	
+	public String getHouseNo() {
+		return houseNo;
 	}
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
+	}
+	public String getLandMark() {
+		return landMark;
+	}
+	public void setLandMark(String landMark) {
+		this.landMark = landMark;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getPinCode() {
+		return pinCode;
+	}
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -50,11 +97,17 @@ public class UserDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getuEmail() {
-		return uEmail;
+	public String getEmail() {
+		return email;
 	}
-	public void setuEmail(String uEmail) {
-		this.uEmail = uEmail;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public int getContactNumber() {
 		return contactNumber;
@@ -62,26 +115,41 @@ public class UserDetails {
 	public void setContactNumber(int contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-	public String getRegistraionDate() {
-		return registraionDate;
-	}
-	public void setRegistraionDate(Date registerDate) {
-		SimpleDateFormat formatter = new SimpleDateFormat(
-				"dd-MM-yyyy, HH:mm:ss");
-		Date date = new Date();
-		this.registraionDate = formatter.format(date);
-	}
-	public Address getUserAddress() {
-		return userAddress;
-	}
-	public void setUserAddress(Address userAddress) {
-		this.userAddress = userAddress;
-	}
 	public String getUserType() {
 		return userType;
 	}
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+	public String getRegistraionDate() {
+		return registraionDate;
+	}
+
+	public void setRegistraionDate(Date registerDate) {
+		SimpleDateFormat formatter = new SimpleDateFormat(
+				"dd-MM-yyyy, HH:mm:ss");
+		this.registraionDate = formatter.format(registerDate);
+	}
+
+	public UserDetails(String firstName, String lastName, String email,
+			String password, Date registraionDate, String userType) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.userType = userType;
+		this.setRegistraionDate(registraionDate);
+		this.registraionDate = this.getRegistraionDate();
+
+	}
+
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
+	public String toStringFullAddress() {
+		return "Address:- " + getHouseNo() + ", " + getLandMark() + ", "
+				+ getCity() + ", " + getState() + " " + getPinCode();
 	}
 
 }

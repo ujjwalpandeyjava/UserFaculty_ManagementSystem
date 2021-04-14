@@ -20,5 +20,4 @@ public class DBConnection {
 		if (factory.isOpen())
 			factory.close();
 	}
-
 }

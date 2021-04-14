@@ -16,6 +16,40 @@
 					<i class="fa fa-user"></i> Login account
 				</h2>
 				<hr class="my-4">
+
+
+
+				<%
+				String invalidLogin = (String) session.getAttribute("login-failed");
+				if (invalidLogin != null) {
+				%>
+				<div class="alert alert-danger" role="alert"><%=invalidLogin%></div>
+				<%
+				session.removeAttribute("login-failed");
+				}
+				%>
+
+				<%
+				String logoutMsg = (String) session.getAttribute("logout-msg");
+				if (logoutMsg != null) {
+				%>
+				<div class="alert alert-success" role="alert"><%=logoutMsg%></div>
+				<%
+				session.removeAttribute("logout-msg");
+				}
+				%>
+
+				<%
+				String loginError = (String) session.getAttribute("Login-error");
+				if (loginError != null) {
+				%>
+				<div class="alert alert-danger" role="alert"><%=loginError%></div>
+				<%
+				}
+				session.removeAttribute("Login-error");
+				%>
+
+
 				<section>
 					<label>E-mail:</label> <br> <input type="text"
 						placeholder="E-mail Address" name="uEmail" required>
