@@ -31,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
 			String uLastName = request.getParameter("uLastName");
 			String uEmail = request.getParameter("uEmail");
 			String uPassword = request.getParameter("uPassword");
+			String uType = request.getParameter("uType");
 
 			Session sess = DBConnection.getFactory().openSession();
 
@@ -40,31 +41,57 @@ public class RegisterServlet extends HttpServlet {
 				session = request.getSession();
 				// Will execute when connection with database is failed due to
 				// various reason.
-				session.setAttribute("reg-failed",
-						"This user email '" +uEmail +"' is already in use take something else.");
+				session.setAttribute("reg-failed", "This user email '" + uEmail
+						+ "' is already in use take something else.");
 				response.sendRedirect("register.jsp");
 			} else {
+				UserDetails uDetails;
+				if (uType != null) {
 
-				UserDetails uDetails = new UserDetails(uFirstName, uLastName,
-						uEmail, uPassword, new Date(), "student");
+					uDetails = new UserDetails(uFirstName, uLastName, uEmail,
+							uPassword, new Date(), uType);
+					// DBConnection gives the factory.
+					// Create session from the factory.
 
-				// DBConnection gives the factory.
-				// Create session from the factory.
+					// Create a transaction from the session.
+					Transaction tr = sess.beginTransaction();
+					// or sess.beginTransaction();
 
-				// Create a transaction from the session.
-				Transaction tr = sess.beginTransaction();
-				// or sess.beginTransaction();
+					Serializable iddd = sess.save(uDetails);
+					System.out.println(iddd);
 
-				Serializable iddd = sess.save(uDetails);
-				System.out.println(iddd);
+					tr.commit();
+					// or sess.getTransaction().commit();
+					sess.close();
 
-				tr.commit();
-				// or sess.getTransaction().commit();
-				sess.close();
+					session = request.getSession();
+					session.setAttribute("reg-sucess",
+							"New '" +uType +"' Registered Sucesfull");
+					response.sendRedirect("admin.jsp");
+				} else {
 
-				session = request.getSession();
-				session.setAttribute("reg-sucess", "Registration Sucesfull");
-				response.sendRedirect("register.jsp");
+					uDetails = new UserDetails(uFirstName, uLastName, uEmail,
+							uPassword, new Date(), "student");
+					// DBConnection gives the factory.
+					// Create session from the factory.
+
+					// Create a transaction from the session.
+					Transaction tr = sess.beginTransaction();
+					// or sess.beginTransaction();
+
+					Serializable iddd = sess.save(uDetails);
+					System.out.println(iddd);
+
+					tr.commit();
+					// or sess.getTransaction().commit();
+					sess.close();
+
+					session = request.getSession();
+					session.setAttribute("reg-sucess",
+							"Registration Sucesfull");
+					response.sendRedirect("register.jsp");
+				}
+
 			}
 		} catch (ConstraintViolationException cve) {
 			System.out.println("Duplicate maal");

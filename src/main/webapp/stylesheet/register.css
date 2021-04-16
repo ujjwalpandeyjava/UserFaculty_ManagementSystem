@@ -76,3 +76,7 @@ input[type="submit"]:focu {
 .hidden {
 	display: none;
 }
+
+.mustFill {
+	color: red;
+}

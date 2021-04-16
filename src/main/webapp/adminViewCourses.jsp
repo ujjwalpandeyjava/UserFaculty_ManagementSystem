@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
-faculty home page
+	Admin view Couress
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>

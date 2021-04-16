@@ -52,7 +52,6 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("login.jsp");
 			}
 		} else {
-
 			logedInDetails = request.getSession();
 			logedInDetails.setAttribute("login-failed",
 					"This user does not exists!!!");
