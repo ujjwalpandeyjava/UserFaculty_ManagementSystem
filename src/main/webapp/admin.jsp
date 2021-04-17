@@ -43,18 +43,6 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 	<!-- //Delete it after use-->
 	<div class="container">
 		<div class="section">
-			<h2>For courses</h2>
-			<dl>
-				<dt>View all courses</dt>
-				<dd>- View all courses having -edit and delete button</dd>
-				<dt>Add new course</dt>
-				<dd>- Title</dd>
-				<dd>- Price</dd>
-				<dd>- Description</dd>
-				<dd>- Course subject name, with selectable list</dd>
-			</dl>
-		</div>
-		<div class="section">
 			<h2>For User</h2>
 			<dl>
 				<dt>View all users - with edit and delete button</dt>
@@ -65,12 +53,20 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 		</div>
 	</div>
 
-	<h2 class="display-3 text-center m-1">This will stay</h2>
 
 	<hr>
 
 	<h2 class="display-3 text-center m-1">Courses</h2>
 	<hr>
+	<%
+	String courseAddedSuccesful = (String) session.getAttribute("course-added");
+	if (courseAddedSuccesful != null) {
+	%>
+	<div class="alert alert-success text-center fs-3 mx-2" role="alert"><%=courseAddedSuccesful%></div>
+	<%
+	session.removeAttribute("course-added");
+	}
+	%>
 	<div class="courses">
 		<div class="p-2 customFlexCard">
 			<div class="card border-secondary mb-3 col" style="max-width: 18rem;">

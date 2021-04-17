@@ -37,8 +37,8 @@
 				%>
 				<li class="nav-item"><a class="nav-link" aria-current="page"
 					href="courses.jsp"><i class="fa fa-user-graduate"> Courses</i></a></li>
-				<li class="nav-item"><a class="nav-link" href="newBatches.jsp">
-						<i class="fa fa-plus" aria-hidden="true"> New Batches</i>
+				<!-- <li class="nav-item"><a class="nav-link" href="newBatches.jsp">
+						<i class="fa fa-plus" aria-hidden="true"> New Batches</i> -->
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="contact.jsp">
 						<i class="fa fa-shopping-basket"> Contact</i>

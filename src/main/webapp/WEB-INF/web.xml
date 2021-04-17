@@ -34,6 +34,18 @@
 		<description></description>
 		<servlet-class>servlets.ViewUserServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AddCourse</servlet-name>
+		<display-name>AddCourse</display-name>
+		<description></description>
+		<servlet-class>servlets.AddCourse</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddCourseServlet</servlet-name>
+		<display-name>AddCourseServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.AddCourseServlet</servlet-class>
+	</servlet>
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
   	<url-pattern>/RegisterServlet</url-pattern>
@@ -53,5 +65,13 @@
   <servlet-mapping>
   	<servlet-name>ViewUserServlet</servlet-name>
   	<url-pattern>/ViewUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddCourse</servlet-name>
+  	<url-pattern>/AddCourse</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddCourseServlet</servlet-name>
+  	<url-pattern>/AddCourseServlet</url-pattern>
   </servlet-mapping>
 </web-app>

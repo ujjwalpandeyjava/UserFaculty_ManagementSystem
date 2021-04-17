@@ -1,3 +1,9 @@
+<%@page import="connection.DBConnection"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.hibernate.Query"%>
+<%@page import="entities.CourseList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,7 +11,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="stylesheet/index.css">
-<title>Insert title here</title>
+<title>Developers' Point | IGNOU PROJECT</title>
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
@@ -13,50 +19,98 @@
 		<div class="primary-container">
 			<div class="section section-1 text-center">
 				<h1
+					style="color: #fb8c00; margin-top: 0px; margin-bottom: -20px; font-family: 'Belleza'; font-weight: bold;">Our
+					Latest Course</h1>
+				<%
+				Session sess = DBConnection.getFactory().openSession();
+				sess.beginTransaction();
+				Query query = sess.createQuery("from CourseList ORDER BY courseAddedDate desc");
+				query.setFirstResult(0);
+				query.setMaxResults(3);
+				List<CourseList> col1 = query.list();//will return the records from 5 to 10th number
+				Iterator<CourseList> itr1 = col1.iterator();
+				CourseList cl = itr1.next();
+				%>
+				<hr>
+				<div class="rows">
+					<div class="of2">
+						<div class="imagediv">
+							<img src="imges/batches/new_batch3.jpg"
+								alt="New Batch, join fast"> <br><%=cl.getCourseID()%>--<%=cl.getCourseImage()%><br>
+						</div>
+						<div>
+							<p>
+								Title:
+								<%=cl.getCourseName()%><br> Description:
+								<%=cl.getCouseDescription()%><br> Price:<%=cl.getCoursePrice()%><br>
+								Launch Date:<%=cl.getCourseAddedDate()%><br> <a
+									class="btn btn-info px-3 float-right" role="button"
+									href="contact.jsp" onclick="batchCourseEnquary()">More
+									Detail</a>
+							</p>
+						</div>
+					</div>
+					<%
+					cl = itr1.next();
+					%>
+					<div class="of2">
+						<div class="imagediv">
+							<img src="imges/batches/new_batch2.jpg"
+								alt="New Batch, join fast"> <br><%=cl.getCourseID()%>--<%=cl.getCourseImage()%><br>
+						</div>
+						<div>
+							<p>
+								Title:
+								<%=cl.getCourseName()%><br> Description:
+								<%=cl.getCouseDescription()%><br> Price:
+								<%=cl.getCoursePrice()%><br> Launch date:
+								<%=cl.getCourseAddedDate()%><br> <a
+									class="btn btn-info px-3 float-right" href="contact.jsp"
+									role="button" onclick="batchCourseEnquary()">More Detail</a>
+							</p>
+						</div>
+					</div>
+					<%
+					sess.getTransaction().commit();
+					sess.close();
+					%>
+				</div>
+				<h1
 					style="color: #fb8c00; margin-top: 20px; margin-bottom: 10px; font-family: 'Belleza'; font-weight: bold;">New
 					Batch</h1>
 				<div class="rows">
-					<div class="of2">
+					<div class="of1">
 						<div class="imagediv">
 							<img src="imges/batches/new_batch1.jpg"
 								alt="New Batch, join fast">
 						</div>
-						<div>
-							<p>
-								Subject: <----><br>Description: <----><br> Price:
-								<----> <a class="btn btn-info px-3 float-right"
-									href="courseDetail.jsp" role="button">More Detail</a>
+						<div class="text-left">
+							<p class="text-left">
+								Teaching:Front-end Web Development<br>Description: Learn
+								how to develop the web with the help of HTML, CSS, JavaScript,
+								Ract, Bootstrap, etc<br> Batch Days: MWF <br> <sub
+									class="text-muted">Things are flexible before starting
+									the batch, take your step and bend them according to your
+									sutiability</sub><br> <a class="btn btn-info px-3 float-right"
+									role="button" href="contact.jsp" onclick="batchCourseEnquary()">More
+									Detail</a>
 							</p>
 						</div>
 					</div>
-					<div class="of2">
-						<div class="imagediv">
-							<img src="imges/batches/new_batch2.jpg"
-								alt="New Batch, join fast">
-						</div>
-						<div>
-							<p>
-								Subject like: Learn java from begginer to pro <----><br>
-								Description: <----><br> Price: <----> <a
-									class="btn btn-info px-3 float-right" href="courseDetail.jsp"
-									role="button">More Detail</a>
-
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="rows">
 					<div class="of1">
 						<div class="imagediv">
-							<img src="imges/batches/new_batch3.jpg"
+							<img src="imges/batches/new_batch4.jpg"
 								alt="New Batch, join fast">
 						</div>
 						<div>
 							<p>
-								Subject: <----><br>Description: <----><br> Price:
-								<----> <a class="btn btn-info px-3 float-right"
-									href="courseDetail.jsp" role="button">More Detail</a>
-
+								Subject: Full Stack Development<br>Description: How to use
+								HTML, CSS, JavaScript, Java, Advanced Java, SQL, etc...<br>Batch
+								Days: TTS <br> <sub class="text-muted">Things are
+									flexible before starting the batch, take your step and bend
+									them according to your sutiability</sub></b><br> <a
+									class="btn btn-info px-3 float-right" href="contact.jsp"
+									onclick="batchCourseEnquary()" role="button">More Detail</a>
 							</p>
 						</div>
 					</div>
@@ -64,16 +118,16 @@
 			</div>
 			<div class="section section-2 text-center w-100">
 				<h1
-					style="color: #fb8c00; margin-top: 20px; margin-bottom: 10px; font-family: 'Belleza'; font-weight: bold;">Our
-					Examplers</h1>
+					style="color: #fb8c00; margin: 20px auto; font-family: 'Belleza'; font-weight: bold;">Our
+					Exemplar</h1>
 				<div class="students">
-					<h2 class="glow">Some of our brellent students</h2>
+					<h2 class="glow">Some of our brilliant students</h2>
 					<div class="d-flex justify-content-center flex-wrap">
 						<div class="col w-30 p-2" style="min-width: 170px">
 							<img width="100%" class="pb-2" src="imges/students/student4.png"
 								alt=""> <br>
 							<h4>Alina Gomes</h4>
-							<u>Our Silver ranked</u> <br> Best AI developer of 2107 with
+							<u>Our Silver-ranked</u> <br> Best AI developer of 2107 with
 							salary of 35 L.P.A.
 						</div>
 						<div class="col w-30 p-2" style="min-width: 170px">
@@ -108,17 +162,15 @@
 			</div>
 			<div class="section bg-white">
 				<div>
-					<style>
-.size-Custome {
-	font-size: 2.1rem;
-}
-</style>
+
 					<div class="d-flex">
 						<a href="register.jsp"
-							class="btn btn-custom btn-outline-dark mx-1 size-Custome"><i
-							class="fa fa-user-plus "> Register</i> </a> <a href="login.jsp"
-							class="btn btn-custom btn-outline-dark mx-1 size-Custome"><i
-							class="fa fa-user-circle "> login</i> </a>
+							class="btn btn-custom btn-outline-dark mx-1 size-Custome"
+							style="font-size: 2.1rem;"><i class="fa fa-user-plus ">
+								Register</i> </a> <a href="login.jsp"
+							class="btn btn-custom btn-outline-dark mx-1 size-Custome"
+							style="font-size: 2.1rem;"><i class="fa fa-user-circle ">
+								login</i> </a>
 					</div>
 				</div>
 			</div>
@@ -155,5 +207,10 @@
 
 	</div>
 	<%@include file="common/footer.jsp"%>
+	<script type="text/javascript">
+		function batchCourseEnquary() {
+			alert("Feel free to ask anything, and sit back freely we will reach you in 25min");
+		}
+	</script>
 </body>
 </html>

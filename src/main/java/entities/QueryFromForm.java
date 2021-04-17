@@ -11,19 +11,15 @@ import javax.persistence.Table;
 @Table
 public class QueryFromForm {
 
-	public QueryFromForm() {
-		super();
-	}
-	
 	@Id
-    @GeneratedValue(strategy  = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false)
 	private int qSoNo;
 	private String qName;
 	private String qEmail;
 	private String qContact;
 	private String qQueryHead;
-    @Column(columnDefinition="TEXT")
+	@Column(columnDefinition = "TEXT")
 	private String qQueryExplained;
 
 	public int getqSoNo() {
@@ -72,6 +68,10 @@ public class QueryFromForm {
 
 	public void setqQueryExplained(String qQueryExplained) {
 		this.qQueryExplained = qQueryExplained;
+	}
+
+	public QueryFromForm() {
+		super();
 	}
 
 	public QueryFromForm(String qName, String qEmail, String qContact,

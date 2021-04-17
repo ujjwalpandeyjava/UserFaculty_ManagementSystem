@@ -59,6 +59,7 @@ img:hover {
 }
 
 .of1, .of2 {
+	max-width: 40%;
 	margin-top: 6px;
 	justify-content: center;
 }
@@ -67,6 +68,10 @@ img:hover {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+}
+
+.of2>div>p {
+	text-align: left !important;
 }
 
 .of1>div:nth-child(2) {

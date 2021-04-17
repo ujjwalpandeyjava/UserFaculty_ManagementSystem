@@ -8,7 +8,8 @@
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
-	Courses page
+	Courses page <br>
+	Use Admin View Courses page data (now in table view) in card view
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>
