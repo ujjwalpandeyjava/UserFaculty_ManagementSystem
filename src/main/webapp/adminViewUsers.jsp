@@ -97,7 +97,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 					<td><%=element.toStringFullAddress()%></td>
 					<td><%=element.getRegistraionDate()%></td>
 					<td><a type="button" class="btn btn-primary"
-						href="updateUser.jsp?courseID=<%=element.getEmail()%>">Update</a></td>
+						href="updateUser.jsp?userId=<%=element.getEmail()%>">Update</a></td>
 					<td><a type="button" class="btn btn-danger"
 						href="DeleteUserServlet?courseID=<%=element.getEmail()%>">Delete</a></td>
 				</tr>
