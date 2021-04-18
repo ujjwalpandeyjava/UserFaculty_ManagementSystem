@@ -11,7 +11,6 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 	session.setAttribute("login-failed",
 	"Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
-	//response.sendRedirect("login.jsp");
 }
 %><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -20,7 +19,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="stylesheet/register.css">
-<title>Update Course | DevelpersPoint</title>
+<title>Admin View users | DevelpersPoint</title>
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
@@ -54,6 +53,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 				onclick="this.parentElement.style.display='none';">×</span>
 		</div>
 		<%
+		session.removeAttribute("Users-Success");
 		}
 		%>
 		<table class="table table-hover">

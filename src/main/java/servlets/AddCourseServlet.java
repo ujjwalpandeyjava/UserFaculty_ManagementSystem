@@ -1,51 +1,51 @@
 package servlets;
 
-import java.io.IOException;
-import java.util.Date;
+import connection.DBConnection;
+import entities.CourseList;
+import org.hibernate.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.hibernate.Session;
-
-import connection.DBConnection;
-import entities.CourseList;
+import java.io.IOException;
+import java.util.Date;
 
 public class AddCourseServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	public AddCourseServlet() {
-		super();
-	}
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+    private static final long serialVersionUID = 1L;
 
-		String title = (String) request.getParameter("cTitle");
-		String description = (String) request.getParameter("cExplination");
-		String image = (String) request.getParameter("subjectImage");
-		int price = Integer.parseInt(request.getParameter("cPrice"));
+    public AddCourseServlet() {
+        super();
+    }
 
-		CourseList cl;
-		cl = new CourseList(title, description, image, price, new Date());
-		System.out.println(cl.toString());
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
 
-		Session sess = DBConnection.getFactory().openSession();
-		sess.beginTransaction();
+        String title = (String) request.getParameter("cTitle");
+        String description = (String) request.getParameter("cExplination");
+        String image = (String) request.getParameter("subjectImage");
+        int price = Integer.parseInt(request.getParameter("cPrice"));
 
-		sess.save(cl);
+        CourseList cl;
+        cl = new CourseList(title, description, image, price, new Date());
+        System.out.println(cl.toString());
 
-		sess.getTransaction().commit();
-		sess.close();
-		
-		HttpSession session = null;
+        Session sess = DBConnection.getFactory().openSession();
+        sess.beginTransaction();
 
-		session = request.getSession();
-		session.setAttribute("course-added", "New courese "+title  +" added");
-		response.sendRedirect("admin.jsp");
+        sess.save(cl);
 
-	
-	}
+        sess.getTransaction().commit();
+        sess.close();
+
+        HttpSession session = null;
+
+        session = request.getSession();
+        session.setAttribute("course-added", "New courese " + title + " added");
+        response.sendRedirect("admin.jsp");
+
+
+    }
 
 }

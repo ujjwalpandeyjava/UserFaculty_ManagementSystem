@@ -1,36 +1,36 @@
 package servlets;
 
-import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class ViewUserServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public ViewUserServlet() {
-		super();
-	}
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Inside doGet");
-		String whoUser = request.getParameter("whoUser");
+    public ViewUserServlet() {
+        super();
+    }
 
-		// Data from UserDetail.java
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Inside doGet");
+        String whoUser = request.getParameter("whoUser");
 
-		if (whoUser.equals("student")) {
-			// Get only faculty data from database
+        // Data from UserDetail.java
 
-		} else if (whoUser.equals("faculty")) {
-			// Get only faculty data from database
+        if (whoUser.equals("student")) {
+            // Get only faculty data from database
 
-		} else {
-			// For all data from database
-		}
+        } else if (whoUser.equals("faculty")) {
+            // Get only faculty data from database
 
-		// Send response and data to the page 'adminViewUser.jsp'
+        } else {
+            // For all data from database
+        }
 
-	}
+        // Send response and data to the page 'adminViewUser.jsp'
+
+    }
 }

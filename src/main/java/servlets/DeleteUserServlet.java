@@ -1,67 +1,60 @@
 package servlets;
 
-import java.io.IOException;
-import java.io.Serializable;
+import connection.DBConnection;
+import entities.UserDetails;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import connection.DBConnection;
-import entities.UserDetails;
+import java.io.IOException;
 
 public class DeleteUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	public DeleteUserServlet() {
 		super();
 	}
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("courseID");
 
-		Session sess = DBConnection.getFactory().openSession();
-		Transaction tr = sess.beginTransaction();
+		try {
+			String email = request.getParameter("courseID");
 
-		String hql = "delete from userdetails where email = :email ";
-		UserDetails userDelete = new UserDetails();
-		boolean result = false;
-		result = deleteByEmail(userDelete, email, sess);
+			Session sess = DBConnection.getFactory().openSession();
+			Transaction tr = sess.beginTransaction();
 
-		System.out.println(result);
-		tr.commit();
-		sess.close();
-		HttpSession session = null;
-		session = request.getSession();
-		System.out.println("Sess closed and session if starts here.");
-		if (!!result) {
-			System.out.println("inside sis ,Before email add");
-			System.out.println("insied sis o add -- " + email);
-			System.out.println("after sis");
-			session.setAttribute("Users-Success",
-					"User with email: '" + email + "' deleted successfully!");
-			System.out.println("Attriburte set success.");
-		} else {
-			System.out.println("delete failed.");
-			session.setAttribute("Users-Success", "User with email: '" + email
-					+ "' not deleted successfully!");
-			System.out.println("Att set succss.");
+			UserDetails userDelete = new UserDetails();
+			userDelete.setEmail(email);
+			int check = 10;
+			UserDetails persist = sess.load(UserDetails.class, email);
+			String utype2 = persist.getUserType();
+
+			if (persist != null) {
+				sess.delete(persist);
+				check = 1;
+			}
+			tr.commit();
+			sess.close();
+			HttpSession session = null;
+			if (check == 1) {
+				session = request.getSession();
+				session.setAttribute("Users-Success", "User with email: '"
+						+ email + "' deleted successfully!");
+			} else {
+				session = request.getSession();
+				session.setAttribute("Users-Success", "User with email: '"
+						+ email + "' not deleted successfully!");
+			}
+			response.sendRedirect("adminViewUsers.jsp?whoUser=" + utype2 + "");
+			// response.sendRedirect("adminViewCourses.jsp");
+			System.out.println("Redirected succes.");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		response.sendRedirect("adminViewUsers.jsp");
-		System.out.println("Redirected succes.");
 	}
-
-	boolean deleteByEmail(UserDetails type, String email, Session sess) {
-		Object persistentInstance = sess.load(type.getClass(), email);
-		if (persistentInstance != null) {
-			sess.delete(persistentInstance);
-			return true;
-		}
-		return false;
-	}
-
 }
