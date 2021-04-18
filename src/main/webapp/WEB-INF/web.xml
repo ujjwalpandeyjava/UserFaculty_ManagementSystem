@@ -46,6 +46,24 @@
 		<description></description>
 		<servlet-class>servlets.AddCourseServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DeleteCourse</servlet-name>
+		<display-name>DeleteCourse</display-name>
+		<description></description>
+		<servlet-class>servlets.DeleteCourse</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateCourse</servlet-name>
+		<display-name>UpdateCourse</display-name>
+		<description></description>
+		<servlet-class>servlets.UpdateCourse</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateCourseServlet</servlet-name>
+		<display-name>UpdateCourseServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.UpdateCourseServlet</servlet-class>
+	</servlet>
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
   	<url-pattern>/RegisterServlet</url-pattern>
@@ -73,5 +91,17 @@
   <servlet-mapping>
   	<servlet-name>AddCourseServlet</servlet-name>
   	<url-pattern>/AddCourseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteCourse</servlet-name>
+  	<url-pattern>/DeleteCourse</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateCourse</servlet-name>
+  	<url-pattern>/UpdateCourse</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateCourseServlet</servlet-name>
+  	<url-pattern>/UpdateCourseServlet</url-pattern>
   </servlet-mapping>
 </web-app>

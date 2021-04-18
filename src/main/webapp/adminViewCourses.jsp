@@ -1,3 +1,4 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.hibernate.Query"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="org.hibernate.Criteria"%>
@@ -9,7 +10,7 @@
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
 if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 	session.setAttribute("login-failed",
-	"Only Admin can acess this page. Login as admin");
+	"Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
 	//response.sendRedirect("login.jsp");
 }
@@ -29,15 +30,31 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 	Criteria criteria = sess.createCriteria(CourseList.class);
 	List<CourseList> col = criteria.list();
 	%>
-	<div class="container-fluid my-4">
-		<table class="table">
+	<div class="container-fluid my-4 overflow-auto">
+		<table class="table table-hover">
 			<thead class="thead-light">
+				<h2 class="display-4 text-center">Course</h2>
+				<%
+				String st = (String) session.getAttribute("course-delete-success");
+				if (st != null) {
+				%>
+				<div class="alert alert-info text-center fade show"
+					style="cursor: grab;">
+					<%=st%>
+					<span class="closebtn text-right float-right"
+						style="right: 10px; cursor: pointer; background-color: white; padding: 2px 8px; border-radius: 3px; margin-left: 30px;"
+						onclick="this.parentElement.style.display='none';">×</span>
+				</div>
+				<%
+				session.removeAttribute("course-delete-success");
+				}
+				%>
 				<tr>
-					<th scope="col">Course Id</th>
+					<th scope="col">Id</th>
 					<th scope="col">Title</th>
-					<th scope="col">Price</th>
 					<th scope="col">Description</th>
-					<th scope="col">Subject</th>
+					<th scope="col">Added on</th>
+					<th scope="col">Price</th>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
 				</tr>
@@ -50,10 +67,14 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 				%>
 				<tr>
 					<th scope="row"><%=cl.getCourseID()%></th>
-					<td><%=cl.getCourseName()%></td>
-					<td><%=cl.getCoursePrice()%></td>
-					<td><%=cl.getCouseDescription()%></td>
+					<td style="word-break: break-all;"><%=cl.getCourseName()%></td>
+					<td style="word-break: break-all;"><%=cl.getCouseDescription()%></td>
 					<td><%=cl.getCourseAddedDate()%></td>
+					<td><%=cl.getCoursePrice()%></td>
+					<td><a type="button" class="btn btn-primary"
+						href="updateCourse.jsp?courseID=<%=cl.getCourseID()%>">Update</a></td>
+					<td><a type="button" class="btn btn-danger"
+						href="DeleteCourse?courseID=<%=cl.getCourseID()%>">Delete</a></td>
 				</tr>
 				<%
 				}

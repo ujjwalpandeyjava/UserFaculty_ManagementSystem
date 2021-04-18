@@ -75,6 +75,13 @@ public class CourseList {
 		this.courseAddedDate = courseAddedDate;
 	}
 
+	public CourseList(String courseName, String couseDescription,
+			int coursePrice) {
+		super();
+		this.courseName = courseName;
+		this.couseDescription = couseDescription;
+		this.coursePrice = coursePrice;
+	}
 	@Override
 	public String toString() {
 		return "CourseList [courseID=" + courseID + ", courseName=" + courseName

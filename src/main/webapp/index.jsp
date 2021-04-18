@@ -35,16 +35,16 @@
 				<div class="rows">
 					<div class="of2">
 						<div class="imagediv">
-							<img src="imges/batches/new_batch3.jpg"
-								alt="New Batch, join fast"> <br><%=cl.getCourseID()%>--<%=cl.getCourseImage()%><br>
+							<img src="imges/coursesPic/<%=cl.getCourseImage()%>"
+								alt="New Batch, join fast"> <br>
 						</div>
 						<div>
 							<p>
-								Title:
-								<%=cl.getCourseName()%><br> Description:
-								<%=cl.getCouseDescription()%><br> Price:<%=cl.getCoursePrice()%><br>
-								Launch Date:<%=cl.getCourseAddedDate()%><br> <a
-									class="btn btn-info px-3 float-right" role="button"
+								<b>Title:</b>
+								<%=cl.getCourseName()%><br> <b>Description:</b>
+								<%=cl.getCouseDescription()%><br> <b>Price: </b>Rs
+								<%=cl.getCoursePrice()%><br> <b>Launch Date: </b><%=cl.getCourseAddedDate()%><br>
+								<a class="btn btn-info px-3 float-right" role="button"
 									href="contact.jsp" onclick="batchCourseEnquary()">More
 									Detail</a>
 							</p>
@@ -56,14 +56,15 @@
 					<div class="of2">
 						<div class="imagediv">
 							<img src="imges/batches/new_batch2.jpg"
-								alt="New Batch, join fast"> <br><%=cl.getCourseID()%>--<%=cl.getCourseImage()%><br>
+								alt="New Batch, join fast"> <br>
 						</div>
 						<div>
 							<p>
-								Title:
-								<%=cl.getCourseName()%><br> Description:
-								<%=cl.getCouseDescription()%><br> Price:
-								<%=cl.getCoursePrice()%><br> Launch date:
+								<b>Title:</b>
+								<%=cl.getCourseName()%><br>
+								<b>Description:</b>
+								<%=cl.getCouseDescription()%><br> <b>Price: </b>Rs
+								<%=cl.getCoursePrice()%><br> <b>Launch Date: </b>
 								<%=cl.getCourseAddedDate()%><br> <a
 									class="btn btn-info px-3 float-right" href="contact.jsp"
 									role="button" onclick="batchCourseEnquary()">More Detail</a>
