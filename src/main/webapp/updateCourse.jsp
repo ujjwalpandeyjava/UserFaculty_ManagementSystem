@@ -22,12 +22,10 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
-
 	<%
 	int id = Integer.parseInt(request.getParameter("courseID"));
 	Session sess = DBConnection.getFactory().openSession();
 	sess.beginTransaction();
-
 	CourseList updateIt = (CourseList) sess.get(CourseList.class, id);
 	%>
 	<div class="container">
@@ -35,7 +33,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 		<form method="post" action="UpdateCourseServlet">
 			<h2 class="text-center">Update Course</h2>
 			<input type="hidden" name="couresID"
-				value="<%= updateIt.getCourseID()%>">
+				value="<%=updateIt.getCourseID()%>">
 			<section>
 				<label>Course Title:<span class="mustFill">*</span></label> <br>
 				<input type="text" placeholder="Title to show on course" required
@@ -58,17 +56,10 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 				class="btn btn-pill text-center vw-20" value="Submit" id="submitMe">
 		</form>
 	</div>
-
 	<%
 	sess.getTransaction().commit();
 	sess.close();
 	%>
-
-
-
-
-
-
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>

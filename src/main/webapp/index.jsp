@@ -61,8 +61,7 @@
 						<div>
 							<p>
 								<b>Title:</b>
-								<%=cl.getCourseName()%><br>
-								<b>Description:</b>
+								<%=cl.getCourseName()%><br> <b>Description:</b>
 								<%=cl.getCouseDescription()%><br> <b>Price: </b>Rs
 								<%=cl.getCoursePrice()%><br> <b>Launch Date: </b>
 								<%=cl.getCourseAddedDate()%><br> <a
@@ -128,22 +127,22 @@
 							<img width="100%" class="pb-2" src="imges/students/student4.png"
 								alt=""> <br>
 							<h4>Alina Gomes</h4>
-							<u>Our Silver-ranked</u> <br> Best AI developer of 2107 with
-							salary of 35 L.P.A.
+							<strong>Our Silver-ranked</strong> <br> Best AI developer of
+							2107 with salary of 35 L.P.A.
 						</div>
 						<div class="col w-30 p-2" style="min-width: 170px">
 							<img width="100%" class="pb-2" src="imges/students/student1.png"
 								alt=""> <br>
 							<h4>UJJWAL PANDEY</h4>
-							<u>Our Golden student</u> <br> Got placement in google with
-							salary of 40 L.P.A.
+							<strong>Our Golden student</strong> <br> Got placement in
+							google with salary of 40 L.P.A.
 						</div>
 						<div class="col w-30 p-2" style="min-width: 170px">
 							<img width="100%" class="pb-2" src="imges/students/student5.png"
 								alt=""> <br>
 							<h4>Madara Uchia</h4>
-							<u>Our Bronze student</u> <br> Best Data Scientist of year
-							2019 with salary of 30 L.P.A.
+							<strong>Our Bronze student</strong> <br> Best Data Scientist
+							of year 2019 with salary of 30 L.P.A.
 
 						</div>
 					</div>

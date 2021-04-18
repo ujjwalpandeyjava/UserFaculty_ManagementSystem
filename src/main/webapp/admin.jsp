@@ -39,21 +39,6 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 </head>
 <body style="background-color: rgb(186, 226, 238);">
 	<%@include file="common/navbar.jsp"%>
-
-	<!-- //Delete it after use-->
-	<div class="container">
-		<div class="section">
-			<h2>For User</h2>
-			<dl>
-				<dt>View all users - with edit and delete button</dt>
-				<dd>- Delete button have confirm</dd>
-				<dt>View all faculty</dt>
-				<dt>View all student</dt>
-			</dl>
-		</div>
-	</div>
-
-
 	<hr>
 
 	<h2 class="display-3 text-center m-1">Courses</h2>
@@ -130,7 +115,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 						One to do editing of that user <br> &bull; Another to delete
 						the course
 					</p>
-					<a class="btn btn-info" href="ViewUserServlet?whoUser=all">View
+					<a class="btn btn-info" href="adminViewUsers.jsp?whoUser=all">View
 						all users</a>
 				</div>
 			</div>
@@ -146,7 +131,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 						Shows a list of faculty in details with 'Two buttons' <br>&bull;
 						Edit that user <br>&bull; Delete the user
 					</p>
-					<a class="btn btn-info" href="ViewUserServlet?whoUser=faculty">View
+					<a class="btn btn-info" href="adminViewUsers.jsp?whoUser=faculty">View
 						all faculty</a>
 				</div>
 			</div>
@@ -162,7 +147,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 						Shows a list of students in details with 'Two buttons' <br>&bull;
 						Edit that user <br>&bull; Delete the user
 					</p>
-					<a class="btn btn-info" href="ViewUserServlet?whoUser=student">View
+					<a class="btn btn-info" href="adminViewUsers.jsp?whoUser=student">View
 						all student</a>
 				</div>
 			</div>

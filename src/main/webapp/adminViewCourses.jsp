@@ -20,7 +20,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Faculty | DevelpersPoint</title>
+<title>Courses | DevelpersPoint</title>
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>

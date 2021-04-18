@@ -17,25 +17,25 @@ public class UserDetails {
 	}
 
 	@Id
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 
-	@Column(nullable = false, length = 20)
+	@Column(nullable = true, length = 20)
 	private String firstName;
 
 	@Column(nullable = true, length = 20)
 	private String lastName;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String password;
 
 	@Column(nullable = true)
 	private int contactNumber;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String registraionDate;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String userType;
 
 	@Column(nullable = true, length = 15)
@@ -150,6 +150,15 @@ public class UserDetails {
 	public String toStringFullAddress() {
 		return "Address:- " + getHouseNo() + ", " + getLandMark() + ", "
 				+ getCity() + ", " + getState() + " " + getPinCode();
+	}
+	@Override
+	public String toString() {
+		return "UserDetails [email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", password=" + password
+				+ ", contactNumber=" + contactNumber + ", registraionDate="
+				+ registraionDate + ", userType=" + userType + ", houseNo="
+				+ houseNo + ", landMark=" + landMark + ", city=" + city
+				+ ", state=" + state + ", pinCode=" + pinCode + "]";
 	}
 
 }

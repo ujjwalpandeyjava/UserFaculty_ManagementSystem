@@ -62,7 +62,7 @@
 			<hr>
 			<div class="text-center">
 				<h2>
-					<u>Some other ways to contact us</u>
+					<strong>Some other ways to contact us</strong>
 				</h2>
 				<b>Number:</b> <i>+91-9876-5432-89, +91-8375-9905-00</i> <br> <b>Mail-name:</b>
 				<i>support@developerspoint.com</i> <br> <b>Visit:</b> <i>36,
