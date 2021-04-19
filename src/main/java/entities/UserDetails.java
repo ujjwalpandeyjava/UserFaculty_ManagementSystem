@@ -163,6 +163,23 @@ public class UserDetails {
 
 	}
 
+	public UserDetails(String email, String firstName, String lastName,
+			String password, int contactNumber, String userType, String houseNo,
+			String landMark, String city, String state, String pinCode) {
+		super();
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.contactNumber = contactNumber;
+		this.userType = userType;
+		this.houseNo = houseNo;
+		this.landMark = landMark;
+		this.city = city;
+		this.state = state;
+		this.pinCode = pinCode;
+	}
+
 	public String getFullName() {
 		return firstName + " " + lastName;
 	}

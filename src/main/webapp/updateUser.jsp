@@ -28,7 +28,14 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 <body>
 	<%@include file="common/navbar.jsp"%>
 	<div class="container" style="min-height: 78vh;">
+
 		<%
+		//Getting prvious page.
+		String url2 = request.getHeader("Referer");
+		//System.out.println(url2);
+		String[] urlParts = url2.split("/");
+		//System.out.println(urlParts[urlParts.length - 1]);
+
 		String email = request.getParameter("userId");
 		System.out.println(email);
 		/* 
@@ -49,7 +56,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 		sess.beginTransaction();
 		UserDetails updateIt = (UserDetails) sess.get(UserDetails.class, email);
 		if (updateIt != null) {
-			System.out.println(updateIt.toString());
+			//System.out.println(updateIt.toString());
 		%>
 		<!-- Form begins here -->
 		<form method="post" action="UpdateUserServlet">
@@ -70,8 +77,10 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 			</section>
 			<br>
 			<section>
-				<label>E-mail:</label><span class="mustFill">*</span> <br> <input
-					type="email" placeholder="E-mail Address" required name="uEmail"
+				<!-- Previous page url with parementer it gave -->
+				<input type="hidden" name="previousPageUrl"
+					value="<%=urlParts[urlParts.length - 1]%>"> <input
+					type="hidden" placeholder="E-mail Address" required name="uEmail"
 					value="<%=updateIt.getEmail()%>">
 			</section>
 			<br>
@@ -85,8 +94,8 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 			</section>
 			<br>
 			<section>
-				<label>Type of user:- (was <%=updateIt.getUserType()%>)
-				</label><span class="mustFill">*</span> <br> <select
+				<label>Type of user:- <span class="mustFill">(this
+						user was <%=updateIt.getUserType()%>) </label>*</span> <br> <select
 					class="form-select" name="uType"
 					value="<%=updateIt.getUserType()%>"
 					aria-label="Default select example" required>
@@ -98,7 +107,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 			</section>
 			<br>
 			<section>
-				<label>Contact no:</label><input type="number"
+				<label>Contact no:</label><input type="text"
 					placeholder="User Contact no" name="uContact"
 					value="<%=updateIt.getContactNumber()%>">
 			</section>
