@@ -26,7 +26,7 @@ public class UpdateUserServlet extends HttpServlet {
 		String uEmail = request.getParameter("uEmail");
 		String password = request.getParameter("uPassword");
 		String uType = request.getParameter("uType");
-		int uContact = (int) Integer.parseInt(request.getParameter("uContact"));
+		String uContact = request.getParameter("uContact");
 		String uHouse = request.getParameter("uHouse");
 		String uLandMark = request.getParameter("uLandmark");
 		String uCity = request.getParameter("uCity");
@@ -45,7 +45,7 @@ public class UpdateUserServlet extends HttpServlet {
 			udu.setLastName(lName);
 
 			udu.setPassword(password);
-			//udu.setContactNumber(uContact);
+			udu.setContactNumber(uContact);
 			udu.setUserType(uType);
 			udu.setHouseNo(uHouse);
 			udu.setLandMark(uLandMark);

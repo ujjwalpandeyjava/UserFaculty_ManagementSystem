@@ -25,7 +25,7 @@ public class UserDetails {
 	private String password;
 
 	@Column(nullable = true)
-	private int contactNumber;
+	private String contactNumber;
 
 	@Column(nullable = false)
 	private String registraionDate;
@@ -124,11 +124,11 @@ public class UserDetails {
 		this.password = password;
 	}
 
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
@@ -164,7 +164,7 @@ public class UserDetails {
 	}
 
 	public UserDetails(String email, String firstName, String lastName,
-			String password, int contactNumber, String userType, String houseNo,
+			String password, String contactNumber, String userType, String houseNo,
 			String landMark, String city, String state, String pinCode) {
 		super();
 		this.email = email;
