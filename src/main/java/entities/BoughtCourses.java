@@ -7,95 +7,85 @@ import javax.persistence.Id;
 
 @Entity
 public class BoughtCourses {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int buyingID;
-    private int courseID;
-    private byte[] courseImage;
-    private String courseImagePath;
-    private String courseName;
-    private int coursePrice = 2999;
-    private String couseDescription;
-    private int userID;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int buyingID;
+	private int courseID;
+	private String courseName;
+	private String couseDescription;
+	private String courseImage;
+	private int coursePrice = 2999;
+	private String userEmail;
 
-    public int getBuyingID() {
-        return buyingID;
-    }
+	public int getBuyingID() {
+		return buyingID;
+	}
 
-    public void setBuyingID(int buyingID) {
-        this.buyingID = buyingID;
-    }
+	public void setBuyingID(int buyingID) {
+		this.buyingID = buyingID;
+	}
 
-    public int getCourseID() {
-        return courseID;
-    }
+	public int getCourseID() {
+		return courseID;
+	}
 
-    public void setCourseID(int courseID) {
-        this.courseID = courseID;
-    }
+	public void setCourseID(int courseID) {
+		this.courseID = courseID;
+	}
 
-    public byte[] getCourseImage() {
-        return courseImage;
-    }
+	public String getCourseName() {
+		return courseName;
+	}
 
-    public void setImage(byte[] courseImage) {
-        this.courseImage = courseImage;
-    }
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 
-    public String getCourseImagePath() {
-        return courseImagePath;
-    }
+	public int getCoursePrice() {
+		return coursePrice;
+	}
 
-    public void setCourseImagePath(String courseImagePath) {
-        this.courseImagePath = courseImagePath;
-    }
+	public void setCoursePrice(int coursePrice) {
+		this.coursePrice = coursePrice;
+	}
 
-    public String getCourseName() {
-        return courseName;
-    }
+	public String getCouseDescription() {
+		return couseDescription;
+	}
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
+	public void setCouseDescription(String couseDescription) {
+		this.couseDescription = couseDescription;
+	}
 
-    public int getCoursePrice() {
-        return coursePrice;
-    }
+	public BoughtCourses() {
+	}
 
-    public void setCoursePrice(int coursePrice) {
-        this.coursePrice = coursePrice;
-    }
+	public String getCourseImage() {
+		return courseImage;
+	}
 
-    public String getCouseDescription() {
-        return couseDescription;
-    }
+	public void setCourseImage(String courseImage) {
+		this.courseImage = courseImage;
+	}
 
-    public void setCouseDescription(String couseDescription) {
-        this.couseDescription = couseDescription;
-    }
+	public String getUserEmail() {
+		return userEmail;
+	}
 
-    public int getUserID() {
-        return userID;
-    }
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public BoughtCourses() {
-    }
-
-    public BoughtCourses(int buyingID, int userID, int courseID,
-                         String courseName, String couseDescription, String courseImagePath,
-                         int coursePrice) {
-        super();
-        this.buyingID = buyingID;
-        this.userID = userID;
-        this.courseID = courseID;
-        this.courseName = courseName;
-        this.couseDescription = couseDescription;
-        this.courseImagePath = courseImagePath;
-        this.coursePrice = coursePrice;
-    }
+	public BoughtCourses(int courseID, String courseName,
+			String couseDescription, String courseImage, int coursePrice,
+			String userEmail) {
+		super();
+		this.courseID = courseID;
+		this.courseName = courseName;
+		this.couseDescription = couseDescription;
+		this.courseImage = courseImage;
+		this.coursePrice = coursePrice;
+		this.userEmail = userEmail;
+	}
 
 }

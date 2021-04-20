@@ -5,11 +5,12 @@
 <%@page import="connection.DBConnection"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
-	session.setAttribute("login-failed",
+if (userDetails1 == null) {
+	/*session.setAttribute("login-failed",
 	"Only Admin can acess this page. Login as admin");
-	response.sendRedirect("LogoutServlet");
-	//response.sendRedirect("login.jsp");
+	response.sendRedirect("LogoutServlet");*/
+	session.setAttribute("login-failed", "Login to access this page");
+	response.sendRedirect("login.jsp");
 }
 %><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -32,7 +33,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 		<%
 		//Getting prvious page.
 		String url2 = request.getHeader("Referer");
-		//System.out.println(url2);
+		System.out.println(url2);
 		String[] urlParts = url2.split("/");
 		//System.out.println(urlParts[urlParts.length - 1]);
 
@@ -99,7 +100,8 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 					class="form-select" name="uType"
 					value="<%=updateIt.getUserType()%>"
 					aria-label="Default select example" required>
-					<option selected>Select user type</option>
+					<option selected value="<%=updateIt.getUserType()%>">Select
+						user type</option>
 					<option value="student">Student</option>
 					<option value="faculty">Faculty</option>
 					<option value="admin">Admin</option>

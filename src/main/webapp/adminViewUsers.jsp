@@ -7,7 +7,7 @@
 <%@page import="org.hibernate.Session"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
+if ((userDetails1 == null) || (userDetails1.getUserType().equals("student"))) {
 	session.setAttribute("login-failed",
 	"Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
@@ -81,8 +81,15 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 					<th scope="col">Contact</th>
 					<th scope="col">Address</th>
 					<th scope="col">With us from</th>
+					<%
+					if (userDetails.getUserType().equals("admin")) {
+					%>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
+
+					<%
+					}
+					%>
 				</tr>
 			</thead>
 			<tbody>
@@ -96,10 +103,19 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 					<td><%=element.getContactNumber()%></td>
 					<td><%=element.toStringFullAddress()%></td>
 					<td><%=element.getRegistraionDate()%></td>
+
+					<%
+					if (userDetails.getUserType().equals("admin")) {
+					%>
 					<td><a type="button" class="btn btn-primary"
 						href="updateUser.jsp?userId=<%=element.getEmail()%>">Update</a></td>
 					<td><a type="button" class="btn btn-danger"
 						href="DeleteUserServlet?courseID=<%=element.getEmail()%>">Delete</a></td>
+
+					<%
+					}
+					%>
+
 				</tr>
 				<%
 				}

@@ -59,7 +59,7 @@ public class UpdateUserServlet extends HttpServlet {
 			sess.close();
 			String previousPageUrl = request.getParameter("previousPageUrl");
 			response.sendRedirect(previousPageUrl);
-			System.out.println(previousPageUrl);
+			//System.out.println(previousPageUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

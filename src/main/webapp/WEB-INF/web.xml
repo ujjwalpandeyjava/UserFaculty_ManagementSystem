@@ -72,15 +72,16 @@
 	</servlet>
 	<servlet>
 		<servlet-name>DeleteUserServlet</servlet-name>
-		<display-name>DeleteUserServlet</display-name>
 		<description />
 		<servlet-class>servlets.DeleteUserServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>UpdateUserServlet</servlet-name>
-		<display-name>UpdateUserServlet</display-name>
-		<description />
 		<servlet-class>servlets.UpdateUserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>BuyCourseServlet</servlet-name>
+		<servlet-class>servlets.BuyCourseServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
@@ -131,7 +132,12 @@
 		<url-pattern>/DeleteUserServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>BuyCourseServlet</servlet-name>
+		<url-pattern>/BuyCourseServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>UpdateUserServlet</servlet-name>
 		<url-pattern>/UpdateUserServlet</url-pattern>
 	</servlet-mapping>
+
 </web-app>

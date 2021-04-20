@@ -39,7 +39,8 @@
 					href="courses.jsp"><i class="fa fa-user-graduate"> Courses</i></a></li>
 				<!-- <li class="nav-item"><a class="nav-link" href="newBatches.jsp">
 						<i class="fa fa-plus" aria-hidden="true"> New Batches</i> -->
-				</a></li>
+				</a>
+				</li>
 				<li class="nav-item"><a class="nav-link" href="contact.jsp">
 						<i class="fa fa-shopping-basket"> Contact</i>
 				</a></li>
@@ -105,7 +106,8 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">---</button>
+							<a class="btn btn-info px-3 w-100" role="button"
+								href="updateUser.jsp?userId=<%=userDetails.getEmail()%>">Edit</a>
 						</div>
 					</div>
 				</div>

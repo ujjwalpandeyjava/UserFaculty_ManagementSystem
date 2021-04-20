@@ -42,10 +42,9 @@
 							<p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
-								<%=cl.getCouseDescription()%><br> <b>Price: </b>Rs
-								<%=cl.getCoursePrice()%><br> <b>Launch Date: </b><%=cl.getCourseAddedDate()%><br>
-								<a class="btn btn-info px-3 float-right" role="button"
-									href="contact.jsp" onclick="batchCourseEnquary()">More
+								<%=cl.getCouseDescription()%><br> <a
+									class="btn btn-info px-3 float-right" role="button"
+									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More
 									Detail</a>
 							</p>
 						</div>
@@ -62,11 +61,10 @@
 							<p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
-								<%=cl.getCouseDescription()%><br> <b>Price: </b>Rs
-								<%=cl.getCoursePrice()%><br> <b>Launch Date: </b>
-								<%=cl.getCourseAddedDate()%><br> <a
-									class="btn btn-info px-3 float-right" href="contact.jsp"
-									role="button" onclick="batchCourseEnquary()">More Detail</a>
+								<%=cl.getCouseDescription()%><br> <a
+									class="btn btn-info px-3 float-right"
+									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>"
+									role="button">More Detail</a>
 							</p>
 						</div>
 					</div>
@@ -92,7 +90,7 @@
 									class="text-muted">Things are flexible before starting
 									the batch, take your step and bend them according to your
 									sutiability</sub><br> <a class="btn btn-info px-3 float-right"
-									role="button" href="contact.jsp" onclick="batchCourseEnquary()">More
+									role="button" onclick="batchCourseEnquary()" href="contact.jsp">More
 									Detail</a>
 							</p>
 						</div>
@@ -108,7 +106,7 @@
 								HTML, CSS, JavaScript, Java, Advanced Java, SQL, etc...<br>Batch
 								Days: TTS <br> <sub class="text-muted">Things are
 									flexible before starting the batch, take your step and bend
-									them according to your sutiability</sub></b><br> <a
+									them according to your suitability</sub><br> <a
 									class="btn btn-info px-3 float-right" href="contact.jsp"
 									onclick="batchCourseEnquary()" role="button">More Detail</a>
 							</p>
