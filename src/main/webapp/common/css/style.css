@@ -7,23 +7,6 @@
 	margin: 0px;
 }
 
-.bg-custom2 {
-	background-color: aqua;
-	color: yellow;
-}
-
-.main-data {
-	height: 93vh !important;
-	width: 100%;
-}
-
-.main-content {
-	min-height: 60vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
 
 form {
 	width: 100%;
@@ -104,7 +87,9 @@ h4 {
 	max-width: 100%;
 	height: auto;
 }
-
+.down{
+	
+}
 @media only screen and (max-width: 320px) {
 	.masonry {
 		-moz-column-count: 1;

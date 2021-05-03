@@ -1,11 +1,9 @@
-@charset "ISO-8859-1";
-
 .main-data {
 	height: 81vh;
 	width: 100%;
-	background-image: linear-gradient(111deg, rgb(64, 151, 147),
-		rgb(164, 70, 215), rgb(64, 151, 147));
 	box-shadow: inset 0px 0px 10px -3px black;
+	background: linear-gradient(to right, rgb(0, 159, 255), rgb(236, 47, 75));
+	background: linear-gradient(to right, rgb(43 164 236), #ee2b46cf);
 }
 
 .form-outter {
@@ -16,7 +14,6 @@
 	padding: 10px;
 	background-image: linear-gradient(252deg, rgb(218 172 243),
 		rgb(113, 223, 218));
-	box-shadow: inset 0px 0px 10px -3px black;
 	box-shadow: inset 0px 0px 10px -3px black;
 	/*border: 1px solid black;*/
 	display: flex;
@@ -78,4 +75,8 @@ input[type="submit"]:focu {
 
 .hidden {
 	display: none;
+}
+
+.mustFill {
+	color: red;
 }
