@@ -83,6 +83,12 @@
 		<servlet-name>BuyCourseServlet</servlet-name>
 		<servlet-class>servlets.BuyCourseServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ForgetPass</servlet-name>
+		<display-name>ForgetPass</display-name>
+		<description></description>
+		<servlet-class>servlets.ForgetPass</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>/RegisterServlet</url-pattern>
@@ -138,6 +144,10 @@
 	<servlet-mapping>
 		<servlet-name>UpdateUserServlet</servlet-name>
 		<url-pattern>/UpdateUserServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ForgetPass</servlet-name>
+		<url-pattern>/ForgetPass</url-pattern>
 	</servlet-mapping>
 
 </web-app>

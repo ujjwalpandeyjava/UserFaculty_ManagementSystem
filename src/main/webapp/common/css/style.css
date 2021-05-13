@@ -7,10 +7,9 @@
 	margin: 0px;
 }
 
-
 form {
 	width: 100%;
-	padding: 1rem 3rem;
+	padding: 1rem 2rem;
 }
 
 form .form-group {
@@ -87,9 +86,7 @@ h4 {
 	max-width: 100%;
 	height: auto;
 }
-.down{
-	
-}
+
 @media only screen and (max-width: 320px) {
 	.masonry {
 		-moz-column-count: 1;

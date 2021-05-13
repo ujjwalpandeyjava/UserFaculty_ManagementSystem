@@ -1,7 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,7 @@ import org.hibernate.Transaction;
 import connection.DBConnection;
 import entities.UserDetails;
 
+@MultipartConfig
 public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -59,7 +62,7 @@ public class UpdateUserServlet extends HttpServlet {
 			sess.close();
 			String previousPageUrl = request.getParameter("previousPageUrl");
 			response.sendRedirect(previousPageUrl);
-			//System.out.println(previousPageUrl);
+			// System.out.println(previousPageUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -86,10 +86,10 @@
 							<p class="text-left">
 								Teaching:Front-end Web Development<br>Description: Learn
 								how to develop the web with the help of HTML, CSS, JavaScript,
-								Ract, Bootstrap, etc<br> Batch Days: MWF <br> <sub
+								React, Bootstrap, etc<br> Batch Days: MWF <br> <sub
 									class="text-muted">Things are flexible before starting
 									the batch, take your step and bend them according to your
-									sutiability</sub><br> <a class="btn btn-info px-3 float-right"
+									suits</sub><br> <a class="btn btn-info px-3 float-right"
 									role="button" onclick="batchCourseEnquary()" href="contact.jsp">More
 									Detail</a>
 							</p>

@@ -43,7 +43,6 @@
 	padding: 0px;
 }
 </style>
-</style>
 <title>Faculty | DevelpersPoint</title>
 </head>
 <body>
@@ -57,7 +56,7 @@
 	%>
 	<div class="row" style="height: 78vh; width: 100vw;">
 		<div class="col-xs-12 col-md-8" style="padding-left: 22px;">
-			<div class="example my-1" style="height: 38vh; overflow-y: scroll;">
+			<div class="example my-1" style="height: 40vh; overflow-y: scroll;">
 				<div class="user">
 					<div class="p-2 customFlexCard">
 						<div class="card border-secondary mb-3 col"
@@ -159,54 +158,39 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 p-5 col-md-4 bg-cus">
-			<h2 class="text-center">
-				Profile details
-				<hr>
-				<div class="text-muted fs-5 lead">
-					<div>
-						Name:
-						<%=userDetails.getFullName()%></div>
-					<div>
-						<br> Email id:
-						<%=userDetails.getEmail()%></div>
+		<div class="col-xs-12 p-5 col-md-4 bg-cus lead">
+			<h2 class="text-center">Profile details</h2>
+			<hr>
+			<div class="text-muted fs-5 lead">
+				<div>
+					Name:
+					<%=userDetails.getFullName()%></div>
+				<div>
+					<br> Email id:
+					<%=userDetails.getEmail()%></div>
+				<br>
+				<div>
+					Contact number:
+					<%=userDetails.getContactNumber()%></div>
+				<div>
+					<br> User Type:
+					<%=userDetails.getUserType()%></div>
+				<div>
+					<br> User since:
+					<%=userDetails.getRegistraionDate()%></div>
+				<div>
 					<br>
-					<div>
-						Contact number:
-						<%=userDetails.getContactNumber()%></div>
-					<div>
-						<br> User Type:
-						<%=userDetails.getUserType()%></div>
-					<div>
-						<br> User since:
-						<%=userDetails.getRegistraionDate()%></div>
-					<div>
-						<br>
-						<%=userDetails.toStringFullAddress()%></p>
-						<a class="btn btn-info px-3 w-100" role="button"
-							href="updateUser.jsp?userId=<%=userDetails.getEmail()%>">Edit</a>
-					</div>
-			</h2>
+					<p><%=userDetails.toStringFullAddress()%></p>
+					<a class="btn btn-info px-3 w-100" role="button"
+						href="updateUser.jsp?userId=<%=userDetails.getEmail()%>">Edit</a>
+				</div>
+			</div>
 		</div>
 	</div>
-
-
-
-
 	<%
 	sess.getTransaction().commit();
 	sess.close();
 	%>
-
-
-
-
-
-
-
-
-
-
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>

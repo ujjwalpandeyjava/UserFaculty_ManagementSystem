@@ -24,7 +24,7 @@ if (userDetails1 == null) {
 	color: red;
 }
 </style>
-<title>Admin update user details | DevelpersPoint</title>
+<title>Admin update details | DevelpersPoint</title>
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
@@ -33,17 +33,13 @@ if (userDetails1 == null) {
 		<%
 		//Getting prvious page.
 		String url2 = request.getHeader("Referer");
-		System.out.println(url2);
 		String[] urlParts = url2.split("/");
-		//System.out.println(urlParts[urlParts.length - 1]);
-
 		String email = request.getParameter("userId");
-		System.out.println(email);
 		/* 
 				UserDetails updateIt = null;
 				HttpSession session2 = null;
 				
-				
+
 				Session sess = DBConnection.getFactory().openSession();
 				Transaction tr = sess.beginTransaction();
 
@@ -60,8 +56,8 @@ if (userDetails1 == null) {
 			//System.out.println(updateIt.toString());
 		%>
 		<!-- Form begins here -->
-		<form method="post" action="UpdateUserServlet">
-			<h2 class="text-center display-5">Update user details with
+		<form method="post" action="UpdateUserServlet"">
+			<h2 class="text-center display-5">Update details with
 				precautions</h2>
 			add details in value and work in servlet to get them all and update
 			in database. then work on courses page. then work on student page.
@@ -96,9 +92,8 @@ if (userDetails1 == null) {
 			<br>
 			<section>
 				<label>Type of user:- <span class="mustFill">(this
-						user was <%=updateIt.getUserType()%>) </label>*</span> <br> <select
-					class="form-select" name="uType"
-					value="<%=updateIt.getUserType()%>"
+						user was <%=updateIt.getUserType()%>) *
+				</span></label> <br> <select class="form-select" name="uType"
 					aria-label="Default select example" required>
 					<option selected value="<%=updateIt.getUserType()%>">Select
 						user type</option>

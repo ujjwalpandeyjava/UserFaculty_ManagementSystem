@@ -62,6 +62,7 @@
 				</section>
 				<br> <br> <input type="submit" value="Submit">
 			</form>
+			<a id="firgetlink" href="forget.jsp" class="text-uppercase">forget pass?</a>
 		</div>
 	</div>
 	<%@include file="common/footer.jsp"%>
