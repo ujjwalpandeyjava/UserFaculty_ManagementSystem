@@ -35,7 +35,8 @@ public class UpdateUserServlet extends HttpServlet {
 		String uCity = request.getParameter("uCity");
 		String uState = request.getParameter("uState");
 		String uPinCode = request.getParameter("uPinCode");
-
+		// Accepting file
+		// Part profilePic = request.getPart("uProfilePic");
 		try {
 			Session sess = DBConnection.getFactory().openSession();
 			Transaction tr = sess.beginTransaction();
@@ -46,15 +47,22 @@ public class UpdateUserServlet extends HttpServlet {
 			udu.setEmail(uEmail);
 			udu.setFirstName(fName);
 			udu.setLastName(lName);
-
 			udu.setPassword(password);
 			udu.setContactNumber(uContact);
-			udu.setUserType(uType);
+			if (uType != null)
+				udu.setUserType(uType);
 			udu.setHouseNo(uHouse);
 			udu.setLandMark(uLandMark);
 			udu.setCity(uCity);
 			udu.setState(uState);
 			udu.setPinCode(uPinCode);
+			// String fileName = profilePic.getSubmittedFileName().replace(" ",
+			// "_");
+			// udu.setImagePath(fileName);
+			// System.out.println(fileName);
+
+			// Pic upload
+			// InputStream ins = profilePic.getInputStream();
 
 			sess.update(udu);
 			System.out.println("updated");
@@ -67,5 +75,4 @@ public class UpdateUserServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

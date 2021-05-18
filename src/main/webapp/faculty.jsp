@@ -1,3 +1,13 @@
+
+<%
+UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
+if ((userDetails1 == null) || (!userDetails1.getUserType().equals("faculty"))) {
+	session.setAttribute("login-failed",
+	"Only a faculty can acess this page. Login as faculty");
+	response.sendRedirect("LogoutServlet");
+	//response.sendRedirect("login.jsp");
+}
+%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Criteria"%>
@@ -54,7 +64,7 @@
 	Criteria criteria = sess.createCriteria(BoughtCourses.class);
 	List<BoughtCourses> col = criteria.list();
 	%>
-	<div class="row" style="height: 78vh; width: 100vw;">
+	<div class="row" style="width: 100vw; padding-bottom: 30px;">
 		<div class="col-xs-12 col-md-8" style="padding-left: 22px;">
 			<div class="example my-1" style="height: 40vh; overflow-y: scroll;">
 				<div class="user">
@@ -65,7 +75,7 @@
 								<b>All users</b>
 							</div>
 							<div class="card-body text-secondary">
-								<h5 class="card-title">List of current user</h5>
+								<h5 class="card-title">List of current users</h5>
 								<p class="card-text">
 									Will show a list of users with details with 'Two buttons' <br>&bull;
 									One to do editing of that user <br> &bull; Another to
@@ -114,15 +124,16 @@
 			</div>
 			<hr>
 			<div class="container-fluid">
-				<div style="height: 100%;"></div>
+				<!-- <div style="height: 100%;"></div> -->
 				<div class="row text-center justify-content-center">
 					<%
 					int count = 0;
 					Iterator<BoughtCourses> itr = col.iterator();
 					while (itr.hasNext()) {
 						BoughtCourses cl = itr.next();
-						if (cl.getUserEmail().equals(userDetails.getEmail())) {
-							count++;
+						if (userDetails != null)
+							if (cl.getUserEmail().equals(userDetails.getEmail())) {
+						count++;
 					%>
 					<div class="col-xs-12 col-sm-6 x  mt-4">
 						<div class="card mx-auto" style="width: 18rem;">
@@ -161,6 +172,9 @@
 		<div class="col-xs-12 p-5 col-md-4 bg-cus lead">
 			<h2 class="text-center">Profile details</h2>
 			<hr>
+			<%
+			if (userDetails != null) {
+			%>
 			<div class="text-muted fs-5 lead">
 				<div>
 					Name:
@@ -185,6 +199,9 @@
 						href="updateUser.jsp?userId=<%=userDetails.getEmail()%>">Edit</a>
 				</div>
 			</div>
+			<%
+			}
+			%>
 		</div>
 	</div>
 	<%

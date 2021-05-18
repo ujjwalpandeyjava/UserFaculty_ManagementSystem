@@ -29,7 +29,6 @@ if (userDetails1 == null) {
 <body>
 	<%@include file="common/navbar.jsp"%>
 	<div class="container" style="min-height: 78vh;">
-
 		<%
 		//Getting prvious page.
 		String url2 = request.getHeader("Referer");
@@ -56,20 +55,19 @@ if (userDetails1 == null) {
 			//System.out.println(updateIt.toString());
 		%>
 		<!-- Form begins here -->
-		<form method="post" action="UpdateUserServlet"">
+		<form method="post" action="UpdateUserServlet"
+			enctype="multipart/form-data">
 			<h2 class="text-center display-5">Update details with
 				precautions</h2>
-			add details in value and work in servlet to get them all and update
-			in database. then work on courses page. then work on student page.
 			<section>
 				<label>First Name:<span class="mustFill">*</span></label> <br>
-				<input type="text" placeholder="First name" required
+				<input type="text" placeholder="First name" required maxlength="20"
 					name="uFirstName" value="<%=updateIt.getFirstName()%>">
 			</section>
 			<br>
 			<section>
 				<label>Last Name:</label> <br> <input type="text"
-					placeholder="Last name" name="uLastName"
+					placeholder="Last name" name="uLastName" maxlength="20"
 					value="<%=updateIt.getLastName()%>">
 			</section>
 			<br>
@@ -80,20 +78,32 @@ if (userDetails1 == null) {
 					type="hidden" placeholder="E-mail Address" required name="uEmail"
 					value="<%=updateIt.getEmail()%>">
 			</section>
-			<br>
-			<section>
-				<label>Password:</label><span class="mustFill">*</span> <br> <input
+			<!-- <section>
+				<label>Profile pic:</label> <br> <input type="file"
+					placeholder="Update profile picture" name="uProfilePic">
+			</section>
+			<br> -->
+			<section style="position: relative;">
+				<label>Update Password </label><span class="mustFill"> do
+					carefully!</span> <br> <input onfocus="seePassword()" id="uPassword"
 					type="password" min="8" max="16" required
 					placeholder="8-16 character long" name="uPassword"
-					onkeyup="CheckCount()" value="<%=updateIt.getPassword()%>">
-				<label class="hidden" id="alert_custom" style="color: orange;">The
-					password must be between 8-16 character long!!</label>
+					onkeyup="CheckCount()" value="<%=updateIt.getPassword()%>"><i
+					class="far fa-eye"
+					style="margin-left: -30px; cursor: pointer; margin-top: 9px; position: absolute;"
+					id="togglePassword"></i> <label class="hidden" id="alert_custom"
+					style="color: orange;">The password must be between 8-16
+					character long!!</label>
 			</section>
 			<br>
+			<%
+			if (userDetails1.getUserType().equals("admin")) {
+			%>
 			<section>
 				<label>Type of user:- <span class="mustFill">(this
 						user was <%=updateIt.getUserType()%>) *
-				</span></label> <br> <select class="form-select" name="uType"
+				</span></label> <br> 
+				<select class="form-select" name="uType"
 					aria-label="Default select example" required>
 					<option selected value="<%=updateIt.getUserType()%>">Select
 						user type</option>
@@ -103,14 +113,17 @@ if (userDetails1 == null) {
 				</select>
 			</section>
 			<br>
+			<%
+			}
+			%>
 			<section>
 				<label>Contact no:</label><input type="text"
-					placeholder="User Contact no" name="uContact"
+					placeholder="User Contact no" name="uContact" maxlength="10"
 					value="<%=updateIt.getContactNumber()%>">
 			</section>
 			<br>
 			<section>
-				<label>House-no:</label><input type="text"
+				<label>House-no:</label><input type="text" maxlength="15"
 					placeholder="House number" name="uHouse"
 					value="<%=updateIt.getHouseNo()%>">
 			</section>
@@ -122,7 +135,7 @@ if (userDetails1 == null) {
 			</section>
 			<br>
 			<section>
-				<label>City:</label><input type="text"
+				<label>City:</label><input type="text" maxlength="35"
 					placeholder="City user live in" name="uCity"
 					value="<%=updateIt.getCity()%>">
 			</section>
@@ -152,6 +165,21 @@ if (userDetails1 == null) {
 		}
 		%>
 	</div>
+	<script type="text/javascript">
+		function seePassword() {
+			document.getElementById("#uPassword").setAttribute("type", text);
+		}
+		const togglePassword = document.querySelector('#togglePassword');
+		const password = document.querySelector('#uPassword');
+		togglePassword.addEventListener('click', function(e) {
+			// toggle the type attribute
+			const type = password.getAttribute('type') === 'password' ? 'text'
+					: 'password';
+			password.setAttribute('type', type);
+			// toggle the eye slash icon
+			this.classList.toggle('fa-eye-slash');
+		});
+	</script>
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>

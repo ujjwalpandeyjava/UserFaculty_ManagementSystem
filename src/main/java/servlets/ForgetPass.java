@@ -22,16 +22,17 @@ public class ForgetPass extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String uEmail = request.getParameter("uEmail");
+		System.out.println(uEmail);
 		Session openSession = DBConnection.getFactory().openSession();
 		UserDetails persist = openSession.get(UserDetails.class, uEmail);
 		openSession.close();
 		if (persist != null) {
 			String mm = "";
 			int len = persist.getPassword().length();
-			for (int i = 0; i < len - 6; i++) {
+			for (int i = 0; i < len - 5; i++) {
 				mm += '*';
 			}
-			String s = persist.getPassword().substring(0, 3) + mm
+			String s = persist.getPassword().substring(0, 2) + mm
 					+ persist.getPassword().substring(len - 3, len);
 			response.sendRedirect("forget.jsp?p=" + s);
 		} else {

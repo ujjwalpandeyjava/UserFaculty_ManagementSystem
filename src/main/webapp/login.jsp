@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%@include file="common/navbar.jsp"%>
-	<div class="main-data d-flex justify-content-center align-items-center">
+	<div class="main-data d-flex justify-content-center align-items-center" style="font-family: cursive"> 
 		<div class="form-outter">
 			<form method="post" action="LoginServlet">
 				<h2 class="my-1">

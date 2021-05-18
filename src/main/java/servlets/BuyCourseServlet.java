@@ -38,7 +38,10 @@ public class BuyCourseServlet extends HttpServlet {
 			Transaction tr = sess.beginTransaction();
 			BoughtCourses bcCourse = new BoughtCourses(cl.getCourseID(),
 					cl.getCourseName(), cl.getCouseDescription(),
-					cl.getCourseImage(), cl.getCoursePrice(), userId);
+					cl.getCourseImage(),
+					cl.getCoursePrice()
+							- cl.getDiscount() * cl.getCoursePrice() / 100,
+					userId);
 			sess.save(bcCourse);
 			tr.commit();
 			sess.close();

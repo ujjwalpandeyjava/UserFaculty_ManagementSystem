@@ -89,6 +89,18 @@
 		<description></description>
 		<servlet-class>servlets.ForgetPass</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ResetPassword</servlet-name>
+		<display-name>ResetPassword</display-name>
+		<description></description>
+		<servlet-class>servlets.ResetPassword</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Temp</servlet-name>
+		<display-name>Temp</display-name>
+		<description></description>
+		<servlet-class>servlets.Temp</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>/RegisterServlet</url-pattern>
@@ -148,6 +160,14 @@
 	<servlet-mapping>
 		<servlet-name>ForgetPass</servlet-name>
 		<url-pattern>/ForgetPass</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ResetPassword</servlet-name>
+		<url-pattern>/ResetPassword</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Temp</servlet-name>
+		<url-pattern>/Temp</url-pattern>
 	</servlet-mapping>
 
 </web-app>

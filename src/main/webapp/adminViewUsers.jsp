@@ -25,7 +25,6 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals("student"))) {
 	<%@include file="common/navbar.jsp"%>
 	<%
 	String userType = request.getParameter("whoUser");
-	//System.out.println(userType);
 	Session sess = DBConnection.getFactory().openSession();
 	sess.beginTransaction();
 	String hql = null;
