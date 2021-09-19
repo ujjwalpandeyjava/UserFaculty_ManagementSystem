@@ -68,7 +68,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 				<tr>
 					<th scope="row"><%=cl.getCourseID()%></th>
 					<td style="word-break: break-all;"><%=cl.getCourseName()%></td>
-					<td style="word-break: break-all;"><%=cl.getCouseDescription()%></td>
+					<td style="word-break: break-all; max-width: 40vw;"><%=cl.getCouseDescription()%></td>
 					<td><%=cl.getCourseAddedDate()%></td>
 					<td><%=cl.getCoursePrice()%></td>
 					<td><a type="button" class="btn btn-primary"

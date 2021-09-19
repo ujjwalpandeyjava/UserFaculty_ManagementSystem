@@ -15,9 +15,10 @@
 <body>
 	<%@include file="common/navbar.jsp"%>
 
-	<div class="main-data d-flex justify-content-center align-items-center">
+	<div class="main-data d-flex justify-content-center align-items-center"
+		style="font-family: cursive;">
 		<div class="form-outter">
-			<h2 class="my-2">
+			<h2 class="mb-4 mt-5">
 				<i class="fa fa-user-plus"></i> Register and Enjoy our Premium
 				Content
 			</h2>
@@ -63,7 +64,7 @@
 				<br>
 				<section>
 					<label>Password:</label><span class="mustFill">*</span> <br> <input
-						type="password" min="8" max="16" required
+						maxlength="16" type="password" min="8" max="16" required
 						placeholder="8-16 character long" name="uPassword"
 						onkeyup="CheckCount()"> <label class="hidden"
 						id="alert_custom" style="color: orange;">The password must

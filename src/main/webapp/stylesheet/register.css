@@ -1,9 +1,9 @@
 .main-data {
-	height: 81vh;
+	height: 91vh;
 	width: 100%;
 	box-shadow: inset 0px 0px 10px -3px black;
 	background: linear-gradient(to right, rgb(0, 159, 255), rgb(236, 47, 75));
-	background: linear-gradient(to right, rgb(43 164 236), #ee2b46cf);
+	/*background: linear-gradient(to right, rgb(43 164 236), #ee2b46cf);*/
 }
 
 .form-outter {

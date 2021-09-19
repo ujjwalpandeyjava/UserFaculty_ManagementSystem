@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="java.util.Iterator"%>
@@ -14,6 +15,16 @@
 <title>Developers' Point | IGNOU PROJECT</title>
 </head>
 <body>
+
+	<%-- <%
+	ServletContext context = request.getServletContext();
+	String path = context.getRealPath("/");
+	//path = path +"\\WEB-INF" ;
+	String newPath =path + "imges" + File.separator + "uploadedImages" + File.separator + "profilePicture" + File.separator
+			+ "crios.png";
+	System.out.println(newPath);
+	%> 
+<img alt="aa" src="<%=newPath %>">--%>
 	<%@include file="common/navbar.jsp"%>
 	<div class="jumbotron m-3 fs-4">
 		<div class="primary-container">
@@ -42,8 +53,16 @@
 							<p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
-								<%=cl.getCouseDescription()%><br> <a
-									class="btn btn-info px-3 float-right" role="button"
+
+								<%
+								String desc2 = cl.getCouseDescription();
+								if (desc2.length() > 100) {
+									desc2 = (String) desc2.substring(0, 100).concat("...click more details");
+								} else
+									desc2 = (String) desc2;
+								%>
+								<%=desc2%>
+								<br> <a class="btn btn-info px-3 float-right" role="button"
 									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More
 									Detail</a>
 							</p>
@@ -61,8 +80,17 @@
 							<p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
-								<%=cl.getCouseDescription()%><br> <a
-									class="btn btn-info px-3 float-right"
+
+
+								<%
+								String desc = cl.getCouseDescription();
+								if (desc.length() > 100) {
+									desc = (String) desc.substring(0, 100);
+								} else
+									desc = (String) desc;
+								%>
+								<%=desc%>
+								<br> <a class="btn btn-info px-3 float-right"
 									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>"
 									role="button">More Detail</a>
 							</p>
@@ -86,11 +114,11 @@
 							<p class="text-left">
 								Teaching:Front-end Web Development<br>Description: Learn
 								how to develop the web with the help of HTML, CSS, JavaScript,
-								Ract, Bootstrap, etc<br> Batch Days: MWF <br> <sub
+								React, Bootstrap, etc<br> Batch Days: MWF <br> <sub
 									class="text-muted">Things are flexible before starting
-									the batch, take your step and bend them according to your
-									sutiability</sub><br> <a class="btn btn-info px-3 float-right"
-									role="button" onclick="batchCourseEnquary()" href="contact.jsp">More
+									the batch, take your step and bend them according to your suits</sub><br>
+								<a class="btn btn-info px-3 float-right" role="button"
+									onclick="batchCourseEnquary()" href="contact.jsp">More
 									Detail</a>
 							</p>
 						</div>
@@ -179,8 +207,14 @@
 							<div class="col-md-5 mt-md-0 mt-3">
 								<h5 class="text-uppercase ">Providng excelence to the
 									future</h5>
-								<p>We are those who provide the best m best faculty to teach
-									student ensuring the best future for them</p>
+								<p>We are those who provide the best of all best faculty to
+									teach student ensuring the best future for them</p>
+								<hr>
+								<p
+									style="font-family: cursive; font-size: 1.1rem; font-stretch: semi-condensed; font-weight: bold;">!Important,
+									We are offline computer teaching institute increasing our reach
+									more and more with this site, to get needy and aspiring
+									computer students and providing them excellence</p>
 							</div>
 							<div class="col-md-3 mb-md-0 mb-3">
 								<h5 class="text-uppercase bold">Address</h5>
@@ -192,9 +226,10 @@
 							<div class="col-md-3 mb-md-0 mb-3">
 								<h5 class="text-uppercase">Contact us</h5>
 								<p>
-									View Email: contactdp@Develperpoint.com<br> <a
-										href="contact.jsp" class="unstyled">View form</a> from our
-									site <br> Contact no: <b> 9876-5432-89</b>
+									Via Email: <i>contactdp@Develperpoint.com</i><br> -<a
+										href="contact.jsp" class="unstyled"><i>Via form</i></a>
+									Contact us from of our site <br> Contact no: <b> <i>
+											9876-5432-89</i></b>
 								</p>
 							</div>
 						</div>

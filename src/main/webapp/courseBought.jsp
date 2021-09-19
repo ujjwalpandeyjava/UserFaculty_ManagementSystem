@@ -31,20 +31,46 @@
 			</strong><%=specific.getCourseName()%></span>
 			<div>
 				<strong>Launch Date: </strong><%=specific.getCourseAddedDate()%></div>
-		</div>
+			<strong>Last Update Date: </strong><%=specific.getUpdatedCourseDate()%></div>
 		<div class="col-xs-12 p-5 col-md-6 bg-cus">
 			<div class="shadow p-3 mb-5 bg-body rounded fs-4">
+				<p style="margin: 10px auto;">
+					<strong><%=specific.getCourseName()%></strong>
+				</p>
+				<hr>
 				<span class="text-center fw-bolder">Description: </span> In this
 				course we
 				<%=specific.getCouseDescription()%></div>
-			<div class="shadow p-3 mb-5 bg-body rounded fs-3">
-				<strong>Rs: </strong><%=specific.getCoursePrice()%></div>
+			<div class="shadow p-3 mb-5 bg-body rounded fs-5"
+				style="line-height: 2.1; font-family: cursive;">
+				<span style="text-decoration: underline;">Requirements:</span> <br>
+				- Before starting this course student should know
+				<%=specific.getRequirements()%>
+				<br> - Specially created for '<%=specific.getLevel()%>' level
+				individuals <br>- Providing all the necessary content in just '<%=specific.getLearnTime()%>'
+				hrs <br>- By our
+				<%=specific.getCreatorName()%>
+				,specialist in
+				<%=specific.getLang()%><br>- On demand in
+				<%=specific.getLanguage()%><br> -
+				<%=specific.getMoneyBackGuaranteeDays()%>-Day Money-Back Guarantee
+			</div>
+			<div class="shadow p-3 mb-5 bg-body rounded fs-5">
+				<strong>Price you bought at: </strong> <span> Rs <%=specific.getCoursePrice() - (specific.getDiscount() * specific.getCoursePrice() / 100)%>
+					- <sub style="font-style: italic;"><span style="color: red;"><del>
+								Rs
+								<%=specific.getCoursePrice()%></del></span><span style="color: green;">
+							<%=specific.getDiscount()%>% off.
+					</span></sub>
+				</span>
+			</div>
 			<div class="shadow p-3 mb-5 bg-body rounded fs-3">
 				<a class="btn btn-info px-3 w-100" role="button" href="contact.jsp">Having
 					Problem? contact us</a>
 			</div>
 		</div>
 	</div>
+
 	<%
 	sess.getTransaction().commit();
 	sess.close();

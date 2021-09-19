@@ -68,7 +68,15 @@
 							<h5 class="card-title" style="word-break: break-all;"><%=cl.getCourseName()%></h5>
 							<hr>
 							<p class="card-text" style="word-break: break-all;">
-								<%=cl.getCouseDescription()%>
+
+								<%
+								String desc2 = cl.getCouseDescription();
+								if (desc2.length() > 130) {
+									desc2 = (String) desc2.substring(0, 100).concat("......");
+								} else
+									desc2 = (String) desc2;
+								%>
+								<%=desc2%>
 							</p>
 							<a href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>"
 								class="btn btn-primary">More Detail</a>

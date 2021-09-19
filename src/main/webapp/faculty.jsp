@@ -1,3 +1,13 @@
+
+<%
+UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
+if ((userDetails1 == null) || (!userDetails1.getUserType().equals("faculty"))) {
+	session.setAttribute("login-failed",
+	"Only a faculty can acess this page. Login as faculty");
+	response.sendRedirect("LogoutServlet");
+	//response.sendRedirect("login.jsp");
+}
+%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Criteria"%>
@@ -43,7 +53,6 @@
 	padding: 0px;
 }
 </style>
-</style>
 <title>Faculty | DevelpersPoint</title>
 </head>
 <body>
@@ -55,9 +64,9 @@
 	Criteria criteria = sess.createCriteria(BoughtCourses.class);
 	List<BoughtCourses> col = criteria.list();
 	%>
-	<div class="row" style="height: 78vh; width: 100vw;">
+	<div class="row" style="width: 100vw; padding-bottom: 30px;">
 		<div class="col-xs-12 col-md-8" style="padding-left: 22px;">
-			<div class="example my-1" style="height: 38vh; overflow-y: scroll;">
+			<div class="example my-1" style="height: 40vh; overflow-y: scroll;">
 				<div class="user">
 					<div class="p-2 customFlexCard">
 						<div class="card border-secondary mb-3 col"
@@ -66,7 +75,7 @@
 								<b>All users</b>
 							</div>
 							<div class="card-body text-secondary">
-								<h5 class="card-title">List of current user</h5>
+								<h5 class="card-title">List of current users</h5>
 								<p class="card-text">
 									Will show a list of users with details with 'Two buttons' <br>&bull;
 									One to do editing of that user <br> &bull; Another to
@@ -115,15 +124,16 @@
 			</div>
 			<hr>
 			<div class="container-fluid">
-				<div style="height: 100%;"></div>
+				<!-- <div style="height: 100%;"></div> -->
 				<div class="row text-center justify-content-center">
 					<%
 					int count = 0;
 					Iterator<BoughtCourses> itr = col.iterator();
 					while (itr.hasNext()) {
 						BoughtCourses cl = itr.next();
-						if (cl.getUserEmail().equals(userDetails.getEmail())) {
-							count++;
+						if (userDetails != null)
+							if (cl.getUserEmail().equals(userDetails.getEmail())) {
+						count++;
 					%>
 					<div class="col-xs-12 col-sm-6 x  mt-4">
 						<div class="card mx-auto" style="width: 18rem;">
@@ -159,54 +169,45 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 p-5 col-md-4 bg-cus">
-			<h2 class="text-center">
-				Profile details
-				<hr>
-				<div class="text-muted fs-5 lead">
-					<div>
-						Name:
-						<%=userDetails.getFullName()%></div>
-					<div>
-						<br> Email id:
-						<%=userDetails.getEmail()%></div>
+		<div class="col-xs-12 p-5 col-md-4 bg-cus lead">
+			<h2 class="text-center">Profile details</h2>
+			<hr>
+			<%
+			if (userDetails != null) {
+			%>
+			<div class="text-muted fs-5 lead">
+				<div>
+					Name:
+					<%=userDetails.getFullName()%></div>
+				<div>
+					<br> Email id:
+					<%=userDetails.getEmail()%></div>
+				<br>
+				<div>
+					Contact number:
+					<%=userDetails.getContactNumber()%></div>
+				<div>
+					<br> User Type:
+					<%=userDetails.getUserType()%></div>
+				<div>
+					<br> User since:
+					<%=userDetails.getRegistraionDate()%></div>
+				<div>
 					<br>
-					<div>
-						Contact number:
-						<%=userDetails.getContactNumber()%></div>
-					<div>
-						<br> User Type:
-						<%=userDetails.getUserType()%></div>
-					<div>
-						<br> User since:
-						<%=userDetails.getRegistraionDate()%></div>
-					<div>
-						<br>
-						<%=userDetails.toStringFullAddress()%></p>
-						<a class="btn btn-info px-3 w-100" role="button"
-							href="updateUser.jsp?userId=<%=userDetails.getEmail()%>">Edit</a>
-					</div>
-			</h2>
+					<p><%=userDetails.toStringFullAddress()%></p>
+					<a class="btn btn-info px-3 w-100" role="button"
+						href="updateUser.jsp?userId=<%=userDetails.getEmail()%>">Edit</a>
+				</div>
+			</div>
+			<%
+			}
+			%>
 		</div>
 	</div>
-
-
-
-
 	<%
 	sess.getTransaction().commit();
 	sess.close();
 	%>
-
-
-
-
-
-
-
-
-
-
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>
