@@ -4,13 +4,13 @@ This project **Institute management system** is create for a offline computer in
 The app is server-client based.
 
 ## What I have used in project.
-    1.  Project type: maven, 
+    1.  Project type: maven
     2.  Core java
-    2.  Advanced java
+    2.  Advanced java (JSP and Servlet both)
     3.  MySQl for database.
-    4.  Spring 
+    4.  Spring Framework
     5.  Hibernate
-    6.  Javax.mail
+    6.  Javax.mail (sending mails)
 
 
 **There are more than 30 functionality in the project for differnt type of person accessing site, with security.**\
@@ -70,5 +70,6 @@ Funcnality available in the project are:
     - buy course, you classes will sone start
 
 
-
-
+**Note:**   If you are not able to run in eclipse (98% chances as to run in another system's eclipse (IDE) we have to change few lines of code.)
+\
+Use the file named **"*Institute Managenent System.pdf*"** from page. no 171 or specially 176. to see what this project looks like after runing
