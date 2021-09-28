@@ -1,8 +1,18 @@
-# InstituteManagementSystem (By: Ujjwal Pandey)
+# InstituteManagementSystem (By: Ujjwal Pandey (solely))
 This project **Institute management system** is create for a offline computer institute which is going online (some part) to increase it's reach and close the gap with students, faculty, adminstration team, helping, request, complain, and other areas where a person has to contact some faculty for any details and changes.
 
-The app is server-client based.\
-\
+The app is server-client based.
+
+## What I have used in project.
+    1.  Project type: maven, 
+    2.  Core java
+    2.  Advanced java
+    3.  MySQl for database.
+    4.  Spring 
+    5.  Hibernate
+    6.  Javax.mail
+
+
 **There are more than 30 functionality in the project for differnt type of person accessing site, with security.**\
 Funcnality available in the project are:
 1. Authentication 
@@ -11,18 +21,54 @@ Funcnality available in the project are:
 4. Different ways to contact the faculty.
 5. Different roles for different people.
     1.  Admin
-    2.  Faculty
-    3.  Student
-6.  Adding details soon....
+        - Can create more users with different roles.
+        - Change the role of user
+        - Can delete user
+        - Update the user details
+        - respond to the queries.
+        - Add new Course
+        - Update old course
+        - Delete old course
+        - Update own detils
+        - View own details separetly
+        - View all the student list
+        - View all Faculty list
+        - View all user list at one place
+    2.  Student
+        - View own details
+        - Update own details
+        - Explore course
+        - Buy coures
+    3.  Faculty
+        - View own details 
+        - Update own detils
+        - View students list
+        - Buy course
+    4. Random user an all users
+        - Explore courses list.
+        - Use contact form for any query
+6.  There are 4+ modes of payment
+6.  And more.
 
 
-# To run project 
-### Follow these steps to run app successfully in the ecilipse of you system.
+# How to run project in eclipse
+### Follow these steps to run app successfully in the ecilipse of you local system.
 
-- **Step 1 -** Download the repo in  zip format.
-- **Step 2 -** Unzip the folder on desired directory
-- **Step 3 -** Open eclipse with JDK-8+, and import the project in it.
-- **Step 4 -** Update the prject as "Maven Update" in eclipse 
-- **Step 4 -** Check all the properties and details of the app, once confirmed with no error follw next step
-- **Step 5 -** Now run app on web server
-- **Step 6 -** The app will open in default browser, open it and use with the details provided.
+- **Step 1 -** Download the zip format folder of repo of this project,
+- **Step 2 -** Unzip the folder on desired directory,
+- **Step 3 -** Open eclipse with JDK-8+, and import the project in it,
+- **Step 4 -** Add server to the project and update the project with "Maven Update" in run option of the project in eclipse, 
+- **Step 4 -** Check all the properties and details of the app, once confirmed with no error follow next step,
+- **Step 5 -** Run app as run on server,
+- **Step 6 -** The app will open in default browser, explor the app. **It's all done**
+    - Create an account,
+    - login with the details,
+    - forget details? use forget section or check your mail indox for the details you added while regestring.
+    - Explore coursed
+    - Check course details
+    - want to know more details? contact us.
+    - buy course, you classes will sone start
+
+
+
+
