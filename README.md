@@ -2,6 +2,9 @@
 This project **Institute management system** is create for a offline computer institute which is going online (some part) to increase it's reach and close the gap with students, faculty, adminstration team, helping, request, complain, and other areas where a person has to contact some faculty for any details and changes.
 
 The app is server-client based.
+\
+**Security note:**
+The app is secure with the urls also, **meaning** no one can access others account if they even have their accout urls or one type of user cannot access the account detils or the account of other user.
 
 ## What I have used in project.
     1.  Project type: maven
