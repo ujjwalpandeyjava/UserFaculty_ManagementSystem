@@ -65,7 +65,7 @@ public class Validate_code_source {
 		// Huzzah! we have machines to try. Return them as an array list
 		// NOTE: We SHOULD take the preference into account to be absolutely
 		// correct. This is left as an exercise for anyone who cares.
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList();
 		NamingEnumeration en = attr.getAll();
 		while (en.hasMore()) {
 			String x = (String) en.next();

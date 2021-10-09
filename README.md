@@ -1,4 +1,4 @@
-# InstituteManagementSystem (By: Ujjwal Pandey (solely))
+# InstituteManagementSystem (By: Ujjwal Pandey (solely project creater))
 This project **Institute management system** is create for a offline computer institute which is going online (some part) to increase it's reach and close the gap with students, faculty, adminstration team, helping, request, complain, and other areas where a person has to contact some faculty for any details and changes.
 
 The app is server-client based.
