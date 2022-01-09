@@ -2,12 +2,12 @@
 This project **User-Faculty work space** is server-client based, designed for an offline computer institute, which is going online (some part) to increase it's reach and minimise the time requied by students, faculty, adminstration team, request, complains, and other areas where a person has to contact some faculty for any details and changes.
 
 
-# Check "Wokring and look.pdf" to see output screens
+# Check "Working and look.pdf" to see output screens
 
 **Security note:**
 The app is secure with the urls also, **meaning** no one can access others account if they even have their accout urls or one type of user cannot access the account detils or the account of other user.
 
-## What langusages and thecs, I have used in project.
+## What languages and thecs, I have used in project.
     1.  Project type: maven
     2.  Core java
     2.  Advanced java (JSP and Servlet both)
@@ -74,6 +74,7 @@ Funcnality available in the project are:
     - buy course, you classes will sone start
 
 
-**Note:**   If you are not able to run in eclipse (98% chances as to run in another system's eclipse (IDE) we have to change few lines of code.)
+**Note:**   Not able to run in eclipse?
+Contact me - ujjwalpandey.aps@gmail.com
 
-Use the file named **"*Institute Managenent System.pdf*"** from page. no 171 or specially 176. to see what this project looks like after runing
+Use the file named **"*Work and look.pdf*"** to see what this project looks like after running successfully
