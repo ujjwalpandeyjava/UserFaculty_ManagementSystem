@@ -1,16 +1,17 @@
-# InstituteManagementSystem (By: Ujjwal Pandey (solely project creater))
-This project **Institute management system** is create for a offline computer institute which is going online (some part) to increase it's reach and close the gap with students, faculty, adminstration team, helping, request, complain, and other areas where a person has to contact some faculty for any details and changes.
+# User-Faculty Work Space *(By: - Ujjwal Pandey - solo creater)*
+This project **User-Faculty work space** is server-client based, designed for an offline computer institute, which is going online (some part) to increase it's reach and minimise the time requied by students, faculty, adminstration team, request, complains, and other areas where a person has to contact some faculty for any details and changes.
 
-The app is server-client based.
-\
+
+# Check "Wokring and look.pdf" to see output screens
+
 **Security note:**
 The app is secure with the urls also, **meaning** no one can access others account if they even have their accout urls or one type of user cannot access the account detils or the account of other user.
 
-## What I have used in project.
+## What langusages and thecs, I have used in project.
     1.  Project type: maven
     2.  Core java
     2.  Advanced java (JSP and Servlet both)
-    3.  MySQl for database.
+    3.  MySQl for database
     4.  Spring Framework
     5.  Hibernate
     6.  Javax.mail (sending mails)
@@ -74,5 +75,5 @@ Funcnality available in the project are:
 
 
 **Note:**   If you are not able to run in eclipse (98% chances as to run in another system's eclipse (IDE) we have to change few lines of code.)
-\
+
 Use the file named **"*Institute Managenent System.pdf*"** from page. no 171 or specially 176. to see what this project looks like after runing
