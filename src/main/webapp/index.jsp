@@ -112,12 +112,13 @@
 						</div>
 						<div class="text-left">
 							<p class="text-left">
-								Teaching:Front-end Web Development<br>Description: Learn
-								how to develop the web with the help of HTML, CSS, JavaScript,
-								React, Bootstrap, etc<br> Batch Days: MWF <br> <sub
-									class="text-muted">Things are flexible before starting
-									the batch, take your step and bend them according to your suits</sub><br>
-								<a class="btn btn-info px-3 float-right" role="button"
+								<strong>Teaching: </strong>Front-end Web Development<br>
+								<strong>Description: </strong>Learn how to develop the web with
+								the help of HTML, CSS, JavaScript, React, Bootstrap, etc<br>
+								Batch Days: MWF <br> <sub class="text-muted">Things
+									are flexible before starting the batch, take your step and bend
+									them according to your suits</sub><br> <a
+									class="btn btn-info px-3 float-right" role="button"
 									onclick="batchCourseEnquary()" href="contact.jsp">More
 									Detail</a>
 							</p>
@@ -130,11 +131,12 @@
 						</div>
 						<div>
 							<p>
-								Subject: Full Stack Development<br>Description: How to use
-								HTML, CSS, JavaScript, Java, Advanced Java, SQL, etc...<br>Batch
-								Days: TTS <br> <sub class="text-muted">Things are
-									flexible before starting the batch, take your step and bend
-									them according to your suitability</sub><br> <a
+								<strong>Subject: </strong>Full Stack Development<br>
+								<strong>Description: </strong>How to use HTML, CSS, JavaScript,
+								Java, Advanced Java, SQL, etc...<br>Batch Days: TTS <br>
+								<sub class="text-muted">Things are flexible before
+									starting the batch, take your step and bend them according to
+									your suitability</sub><br> <a
 									class="btn btn-info px-3 float-right" href="contact.jsp"
 									onclick="batchCourseEnquary()" role="button">More Detail</a>
 							</p>
@@ -241,9 +243,9 @@
 	</div>
 	<%@include file="common/footer.jsp"%>
 	<script type="text/javascript">
-		function batchCourseEnquary() {
-			alert("Feel free to ask anything, and sit back freely we will reach you in 25min");
-		}
-	</script>
+	function batchCourseEnquary() {
+	    alert("Feel free to ask anything, and sit back freely we will reach you in 25min");
+	}
+    </script>
 </body>
 </html>

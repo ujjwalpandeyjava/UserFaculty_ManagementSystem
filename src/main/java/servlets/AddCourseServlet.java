@@ -44,7 +44,7 @@ public class AddCourseServlet extends HttpServlet {
 		HttpSession session = null;
 
 		session = request.getSession();
-		session.setAttribute("course-added", "New courese " + title + " added");
+		session.setAttribute("course-added", "New coures " + title + " added");
 		response.sendRedirect("admin.jsp");
 
 	}

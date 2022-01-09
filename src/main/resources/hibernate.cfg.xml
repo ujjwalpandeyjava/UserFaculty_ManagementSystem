@@ -16,10 +16,10 @@
  		<property name="format_sql">true</property> -->
 
 		<!-- POJO to create classes -->
-		<mapping class="entities.UserDetails" />
-		<mapping class="entities.CourseList" />
 		<mapping class="entities.BoughtCourses" />
+		<mapping class="entities.CourseList" />
 		<mapping class="entities.QueryFromForm" />
+		<mapping class="entities.UserDetails" />
 		<!-- File where annotation is performed. -->
 		<!--<mapping resource = "hibernate.student"/> -->
 		<!-- !IMPORTANT:- resource attribute is used in mapping option when using 

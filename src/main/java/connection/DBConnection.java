@@ -13,9 +13,8 @@ public class DBConnection {
     public static SessionFactory factory;
 
     public static SessionFactory getFactory() {
-        if (factory == null) {
+        if (factory == null) 
             factory = new Configuration().configure().buildSessionFactory();
-        }
         return factory;
     }
 
