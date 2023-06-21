@@ -21,8 +21,8 @@ public class UpdateUserServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String fName = request.getParameter("uFirstName");
 		String lName = request.getParameter("uLastName");
 		String uEmail = request.getParameter("uEmail");
@@ -58,18 +58,13 @@ public class UpdateUserServlet extends HttpServlet {
 			// String fileName = profilePic.getSubmittedFileName().replace(" ",
 			// "_");
 			// udu.setImagePath(fileName);
-			// System.out.println(fileName);
-
 			// Pic upload
 			// InputStream ins = profilePic.getInputStream();
-
 			sess.update(udu);
-			System.out.println("updated");
 			tr.commit();
 			sess.close();
 			String previousPageUrl = request.getParameter("previousPageUrl");
 			response.sendRedirect(previousPageUrl);
-			// System.out.println(previousPageUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

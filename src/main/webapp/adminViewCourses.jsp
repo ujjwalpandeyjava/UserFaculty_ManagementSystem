@@ -1,3 +1,4 @@
+<%@page import="enums.UserType"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.hibernate.Query"%>
 <%@page import="java.util.Iterator"%>
@@ -8,7 +9,7 @@
 <%@page import="connection.DBConnection"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
+if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPERADMIN.getUserType()))) {
 	session.setAttribute("login-failed",
 	"Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
@@ -31,6 +32,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 	List<CourseList> col = criteria.list();
 	%>
 	<div class="container-fluid my-4 overflow-auto">
+	<% if(!col.isEmpty()) { %>
 		<table class="table table-hover">
 			<thead class="thead-light">
 				<h2 class="display-4 text-center">Course</h2>
@@ -81,6 +83,9 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 				%>
 			</tbody>
 		</table>
+	<% } else { %>
+	<h2 align="center">No course added yet!</h2>
+	<% } %>
 	</div>
 	<!-- Closing the page data loading-->
 	<%

@@ -68,7 +68,6 @@ public class ResetPassword extends HttpServlet {
 		} else if (!phone.isBlank()) {
 
 			List<UserDetails> phoneInDatabase = isPhoneInDatabase(phone);
-			System.out.println(phoneInDatabase);
 			if (!phoneInDatabase.isEmpty())
 				for (UserDetails userD : phoneInDatabase) {
 
@@ -183,7 +182,6 @@ public class ResetPassword extends HttpServlet {
 			return mess;
 		} catch (MessagingException e) {
 			e.printStackTrace();
-			System.out.println("Sone extra");
 		}
 		return null;
 	};
@@ -207,7 +205,6 @@ public class ResetPassword extends HttpServlet {
 			return mess;
 		} catch (MessagingException e) {
 			e.printStackTrace();
-			System.out.println("Sone extra");
 		}
 		return null;
 	}

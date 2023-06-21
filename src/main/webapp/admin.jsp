@@ -1,7 +1,7 @@
-
+<%@page import="enums.UserType"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
+if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPERADMIN.getUserType()))) {
 	session.setAttribute("login-failed",
 	"Only Admin can acess this page. Login as admin");
 	response.sendRedirect("LogoutServlet");

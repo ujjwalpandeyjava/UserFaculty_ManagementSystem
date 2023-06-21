@@ -56,7 +56,6 @@ public class UpdateCourseServlet extends HttpServlet {
 		updateIt.setLanguage(cLanguage);
 		updateIt.setCourseImage(subjectImage);
 		updateIt.setUpdatedCourseDate(new Date());
-		System.out.println(updateIt);
 		tr.commit();
 		sess.close();
 		HttpSession session = request.getSession();

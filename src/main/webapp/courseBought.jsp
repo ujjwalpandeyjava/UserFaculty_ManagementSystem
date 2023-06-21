@@ -48,12 +48,10 @@
 				<%=specific.getRequirements()%>
 				<br> - Specially created for '<%=specific.getLevel()%>' level
 				individuals <br>- Providing all the necessary content in just '<%=specific.getLearnTime()%>'
-				hrs <br>- By our
-				<%=specific.getCreatorName()%>
-				,specialist in
+				hrs <br>- By our, <%=specific.getCreatorName()%> specialist in
 				<%=specific.getLang()%><br>- On demand in
 				<%=specific.getLanguage()%><br> -
-				<%=specific.getMoneyBackGuaranteeDays()%>-Day Money-Back Guarantee
+				<%=specific.getMoneyBackGuaranteeDays()%>-Days money back guarantee.
 			</div>
 			<div class="shadow p-3 mb-5 bg-body rounded fs-5">
 				<strong>Price you bought at: </strong> <span> Rs <%=specific.getCoursePrice() - (specific.getDiscount() * specific.getCoursePrice() / 100)%>

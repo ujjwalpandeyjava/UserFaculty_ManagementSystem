@@ -1,7 +1,8 @@
 
+<%@page import="enums.UserType"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (!userDetails1.getUserType().equals("student"))) {
+if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.LEARNER.getUserType()))) {
 	session.setAttribute("login-failed",
 	"To acess this page login as a student first");
 	response.sendRedirect("LogoutServlet");

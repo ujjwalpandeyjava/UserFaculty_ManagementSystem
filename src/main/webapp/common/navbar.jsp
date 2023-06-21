@@ -3,13 +3,7 @@
 <link href="webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- Font-awesome CDN Dependencies -->
-<link href="webjars/font-awesome/5.15.2/css/all.min.css"
-	rel="stylesheet">
-<!-- 
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">-->
-<!-- Custom -->
+<link href="webjars/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="common/css/style.css">
 <link rel="image/x-icon" href="fa fa-icon">
 <!-- Navigation Bar starts here -->
@@ -29,27 +23,12 @@
 				UserDetails userDetails = (UserDetails) session.getAttribute("logedInUser");
 				if (userDetails != null) {
 				%>
-				<li class="nav-item"><a class="nav-link" href="home.jsp"> <i
-						class="fa fa-home" aria-hidden="true"> Home</i>
-				</a></li>
-				<%
-				}
-				%>
-				<li class="nav-item"><a class="nav-link" aria-current="page"
-					href="courses.jsp"><i class="fa fa-user-graduate"> Courses</i></a></li>
-				<!-- <li class="nav-item"><a class="nav-link" href="newBatches.jsp">
-						<i class="fa fa-plus" aria-hidden="true"> New Batches</i> -->
-				</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="contact.jsp">
-						<i class="fa fa-shopping-basket"> Contact</i>
-				</a></li>
+				<li class="nav-item"><a class="nav-link" href="home.jsp"><i class="fa fa-home" aria-hidden="true">Home</i></a></li>
+				<% } %>
+				<li class="nav-item"><a class="nav-link" aria-current="page" href="courses.jsp"><i class="fa fa-user-graduate"> Courses</i></a></li>
+				<li class="nav-item"><a class="nav-link" href="contact.jsp"><i class="fa fa-shopping-basket"> Contact</i></a></li>
 			</ul>
-
-
-			<%
-			if (userDetails != null) {
-			%>
+			<% if (userDetails != null) { %>
 			<div class="d-flex">
 				<a class="btn btn-custom btn-outline-dark mx-1"
 					data-bs-toggle="modal" data-bs-target="#exampleModal"><i
@@ -72,34 +51,22 @@
 							<table class="table table-striped text-center">
 								<thead>
 									<tr>
-										<th scope="col" colspan="2"><i
-											class="fa fa-user-circle fs-4"> DETAILS</i></th>
+										<th scope="col" colspan="2"><i class="fa fa-user-circle fs-4"> DETAILS</i></th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<th scope="row">Email ID:</th>
-										<td><%=userDetails.getEmail()%></td>
+										<td><i><%=userDetails.getEmail()%></i></td>
 									</tr>
 									<tr>
 										<th scope="row">Name:</th>
-										<td><%=userDetails.getFirstName()%></td>
+										<td><%=userDetails.getFullName()%></td>
 									</tr>
 									<tr>
 										<th scope="row">User since:</th>
 										<td><%=userDetails.getRegistraionDate()%></td>
 									</tr>
-									<!--<tr>
-										<th scope="row">Password</th>
-										<td colspan="2">
-									/*
-											String passStar = "";
-											String pass = userDetails.getPassword();
-											char[] ch = new char[pass.length()];
-											for (int i = 0; i < pass.length(); i++) {
-												passStar += "*";
-											}*/				%></td>
-									</tr>-->
 								</tbody>
 							</table>
 						</div>
@@ -113,20 +80,14 @@
 				</div>
 			</div>
 
-			<%
-			} else {
-			%>
+			<% } else { %>
 			<div class="d-flex">
 				<a href="register.jsp" class="btn btn-custom btn-outline-dark mx-1"><i
 					class="fa fa-user-plus"> Register</i> </a> <a href="login.jsp"
 					class="btn btn-custom btn-outline-dark mx-1"><i
 					class="fa fa-user-circle"> login</i> </a>
 			</div>
-			<%
-			}
-			%>
+			<% } %>
 		</div>
 	</div>
 </nav>
-<!-- Navigation Bar ends here -->
-

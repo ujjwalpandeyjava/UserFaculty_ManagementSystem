@@ -15,14 +15,14 @@ import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
+
 public class Validate_code_source {
 	public static void main(String args[]) {
-		String testData[] = {"tvf@tvf.cz", "ujjwalpandey.apps@gmail.com",
-				"ujjwalpandey.apps@gmail.com", "thisIsFake@gmail.com"};
-		for (int i = 0; i < testData.length; i++) {
-			System.out.println(
-					testData[i] + " is valid? " + isAddressValid(testData[i]));
-		}
+		String testData[] = { "tvf@tvf.cz", "ujjwalpandey.apps@gmail.com", "ujjwalpandey.apps@gmail.com",
+				"thisIsFake@gmail.com" };
+		for (int i = 0; i < testData.length; i++)
+			System.out.println(testData[i] + " is valid? " + isAddressValid(testData[i]));
+		System.out.println("Done.");
 		return;
 	}
 
@@ -41,32 +41,32 @@ public class Validate_code_source {
 		}
 		return res;
 	}
+
 	private static void say(BufferedWriter wr, String text) throws IOException {
 		wr.write(text + "\r\n");
 		wr.flush();
 		return;
 	}
-	private static ArrayList getMX(String hostName) throws NamingException {
+
+	private static ArrayList<String> getMX(String hostName) throws NamingException {
 		// Perform a DNS lookup for MX records in the domain
-		Hashtable env = new Hashtable();
-		env.put("java.naming.factory.initial",
-				"com.sun.jndi.dns.DnsContextFactory");
+		Hashtable<String, String> env = new Hashtable<>();
+		env.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
 		DirContext ictx = new InitialDirContext(env);
-		Attributes attrs = ictx.getAttributes(hostName, new String[]{"MX"});
+		Attributes attrs = ictx.getAttributes(hostName, new String[] { "MX" });
 		Attribute attr = attrs.get("MX");
 		// if we don't have an MX record, try the machine itself
 		if ((attr == null) || (attr.size() == 0)) {
-			attrs = ictx.getAttributes(hostName, new String[]{"A"});
+			attrs = ictx.getAttributes(hostName, new String[] { "A" });
 			attr = attrs.get("A");
 			if (attr == null)
-				throw new NamingException(
-						"No match for name '" + hostName + "'");
+				throw new NamingException("No match for name '" + hostName + "'");
 		}
 		// Huzzah! we have machines to try. Return them as an array list
 		// NOTE: We SHOULD take the preference into account to be absolutely
 		// correct. This is left as an exercise for anyone who cares.
-		ArrayList<String> res = new ArrayList();
-		NamingEnumeration en = attr.getAll();
+		ArrayList<String> res = new ArrayList<>();
+		NamingEnumeration<?> en = attr.getAll();
 		while (en.hasMore()) {
 			String x = (String) en.next();
 			String f[] = x.split(" ");
@@ -76,6 +76,7 @@ public class Validate_code_source {
 		}
 		return res;
 	}
+
 	public static boolean isAddressValid(String address) {
 		// Find the separator for the domain name
 		int pos = address.indexOf('@');
@@ -84,7 +85,7 @@ public class Validate_code_source {
 			return false;
 		// Isolate the domain/machine name and get a list of mail exchangers
 		String domain = address.substring(++pos);
-		ArrayList mxList = null;
+		ArrayList<String> mxList = null;
 		try {
 			mxList = getMX(domain);
 		} catch (NamingException ex) {
@@ -99,27 +100,31 @@ public class Validate_code_source {
 		// a message [store and forwarder for example] and another [like
 		// the actual mail server] to reject it. This is why we REALLY ought
 		// to take the preference into account.
-		for (int mx = 0; mx < mxList.size(); mx++) {
+		for (int mxIndex = 0; mxIndex < mxList.size(); mxIndex++) {
 			boolean valid = false;
 			try {
 				int res;
-				Socket skt = new Socket((String) mxList.get(mx), 25);
-				BufferedReader rdr = new BufferedReader(
-						new InputStreamReader(skt.getInputStream()));
-				BufferedWriter wtr = new BufferedWriter(
-						new OutputStreamWriter(skt.getOutputStream()));
+				Socket skt = new Socket((String) mxList.get(mxIndex), 25);
+				BufferedReader rdr = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+				BufferedWriter wtr = new BufferedWriter(new OutputStreamWriter(skt.getOutputStream()));
 				res = hear(rdr);
-				if (res != 220)
+				if (res != 220) {
+					skt.close();
 					throw new Exception("Invalid header");
+				}
 				say(wtr, "EHLO orbaker.com");
 				res = hear(rdr);
-				if (res != 250)
+				if (res != 250) {
+					skt.close();
 					throw new Exception("Not ESMTP");
+				}
 				// validate the sender address
 				say(wtr, "MAIL FROM: <tim@orbaker.com>");
 				res = hear(rdr);
-				if (res != 250)
+				if (res != 250) {
+					skt.close();
 					throw new Exception("Sender rejected");
+				}
 				say(wtr, "RCPT TO: <" + address + ">");
 				res = hear(rdr);
 				// be polite
@@ -127,8 +132,10 @@ public class Validate_code_source {
 				hear(rdr);
 				say(wtr, "QUIT");
 				hear(rdr);
-				if (res != 250)
+				if (res != 250) {
+					skt.close();
 					throw new Exception("Address is not valid!");
+				}
 				valid = true;
 				rdr.close();
 				wtr.close();
@@ -142,12 +149,12 @@ public class Validate_code_source {
 		}
 		return false;
 	}
+
 	public String call_this_to_validate(String email) {
-		String testData[] = {email};
+		String testData[] = { email };
 		String return_string = "";
 		for (int ctr = 0; ctr < testData.length; ctr++) {
-			return_string = (testData[ctr] + " is valid? "
-					+ isAddressValid(testData[ctr]));
+			return_string = (testData[ctr] + " is valid? " + isAddressValid(testData[ctr]));
 		}
 		return return_string;
 	}

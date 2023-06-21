@@ -31,8 +31,6 @@ public class AddCourseServlet extends HttpServlet {
 
 		CourseList cl;
 		cl = new CourseList(title, description, image, price, new Date());
-		//System.out.println(cl.toString());
-
 		Session sess = DBConnection.getFactory().openSession();
 		sess.beginTransaction();
 

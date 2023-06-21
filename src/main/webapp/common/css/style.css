@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+
 /*
 	Navigation bar and Footer Styling.
 */
@@ -56,7 +57,12 @@ h4 {
 	font-weight: normal;
 }
 
-.masonry { /* Masonry container */
+table td {
+	text-align: start;
+}
+
+.masonry {
+	/* Masonry container */
 	-webkit-column-count: 4;
 	-moz-column-count: 4;
 	column-count: 4;

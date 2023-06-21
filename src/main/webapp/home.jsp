@@ -1,3 +1,4 @@
+<%@page import="enums.UserType"%>
 <%@page import="entities.UserDetails"%>
 <%
 UserDetails userDetails = (UserDetails) session.getAttribute("logedInUser");
@@ -8,11 +9,11 @@ if (userDetails == null) {
 } else {
 	HttpSession logedInDetails = request.getSession();
 	logedInDetails.setAttribute("logedInUser", userDetails);
-	if (userDetails.getUserType().equals("student")) {
+	if (userDetails.getUserType().equals(UserType.LEARNER.getUserType())) {
 		response.sendRedirect("student.jsp");
-	} else if (userDetails.getUserType().equals("faculty"))
+	} else if (userDetails.getUserType().equals(UserType.FACULTY.getUserType()))
 		response.sendRedirect("faculty.jsp");
-	else if (userDetails.getUserType().equals("admin"))
+	else if (userDetails.getUserType().equals(UserType.SUPERADMIN.getUserType()))
 		response.sendRedirect("admin.jsp");
 }
 %>

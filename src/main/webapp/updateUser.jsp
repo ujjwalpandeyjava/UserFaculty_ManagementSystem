@@ -1,4 +1,4 @@
-
+<%@page import="enums.UserType"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="org.hibernate.Session"%>
@@ -52,7 +52,6 @@ if (userDetails1 == null) {
 		sess.beginTransaction();
 		UserDetails updateIt = (UserDetails) sess.get(UserDetails.class, email);
 		if (updateIt != null) {
-			//System.out.println(updateIt.toString());
 		%>
 		<!-- Form begins here -->
 		<form method="post" action="UpdateUserServlet"
@@ -97,19 +96,18 @@ if (userDetails1 == null) {
 			</section>
 			<br>
 			<%
-			if (userDetails1.getUserType().equals("admin")) {
+			if (userDetails1.getUserType().equals(UserType.SUPERADMIN.getUserType())) {
 			%>
 			<section>
 				<label>Type of user:- <span class="mustFill">(this
 						user was <%=updateIt.getUserType()%>) *
-				</span></label> <br> 
-				<select class="form-select" name="uType"
+				</span></label> <br> <select class="form-select" name="uType"
 					aria-label="Default select example" required>
 					<option selected value="<%=updateIt.getUserType()%>">Select
 						user type</option>
 					<option value="student">Student</option>
 					<option value="faculty">Faculty</option>
-					<option value="admin">Admin</option>
+					<option value=UserType.SUPERADMIN.getUserType()>Admin</option>
 				</select>
 			</section>
 			<br>
@@ -166,20 +164,20 @@ if (userDetails1 == null) {
 		%>
 	</div>
 	<script type="text/javascript">
-		function seePassword() {
-			document.getElementById("#uPassword").setAttribute("type", text);
-		}
-		const togglePassword = document.querySelector('#togglePassword');
-		const password = document.querySelector('#uPassword');
-		togglePassword.addEventListener('click', function(e) {
-			// toggle the type attribute
-			const type = password.getAttribute('type') === 'password' ? 'text'
-					: 'password';
-			password.setAttribute('type', type);
-			// toggle the eye slash icon
-			this.classList.toggle('fa-eye-slash');
-		});
-	</script>
+	function seePassword() {
+	    document.getElementById("#uPassword").setAttribute("type", text);
+	}
+	const togglePassword = document.querySelector('#togglePassword');
+	const password = document.querySelector('#uPassword');
+	togglePassword.addEventListener('click', function(e) {
+	    // toggle the type attribute
+	    const type = password.getAttribute('type') === 'password' ? 'text'
+		    : 'password';
+	    password.setAttribute('type', type);
+	    // toggle the eye slash icon
+	    this.classList.toggle('fa-eye-slash');
+	});
+    </script>
 	<%@include file="common/footer.jsp"%>
 </body>
 </html>

@@ -1,31 +1,28 @@
-
+<%@page import="enums.UserType"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
-	session.setAttribute("login-failed",
-	"Only Admin can acess this page. Login as admin");
+if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPERADMIN.getUserType()))) {
+	session.setAttribute("login-failed", "Only Admin can acess this page. Login as admin");
 	response.sendRedirect("LogoutServlet");
 	//response.sendRedirect("login.jsp");
 }
-%><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+%><%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="stylesheet/register.css">
-<style type="text/css">
-.mustFill {
-	color: red;
-}
-</style>
-<title>Admin add user | DevelpersPoint</title>
-</head>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" type="text/css" href="stylesheet/register.css">
+			<style type="text/css">
+			.mustFill {
+				color: red;
+			}
+			</style>
+		<title>Admin add user | DevelpersPoint</title>
+	</head>
 <body>
 	<%@include file="common/navbar.jsp"%>
-
 	<div class="container">
-	<!-- Form begins here -->
+		<!-- Form begins here -->
 		<form method="post" action="RegisterServlet">
 			<h2 class="text-center">Add new user with respective details</h2>
 			<section>
@@ -57,10 +54,10 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals("admin"))) {
 				<label>Type of user:-</label><span class="mustFill">*</span> <br>
 				<select class="form-select" name="uType"
 					aria-label="Default select example">
-					<option selected>Select user type</option>
-					<option value="student">Student</option>
-					<option value="faculty">Faculty</option>
-					<option value="admin">Admin</option>
+					<option selected disabled="disabled">Select user type</option>
+					<option value=<%=UserType.LEARNER.getUserType()%>>Learner</option>
+					<option value=<%=UserType.FACULTY.getUserType()%>>Faculty</option>
+					<option value=<%=UserType.SUPERADMIN.getUserType()%>>Admin</option>
 				</select>
 			</section>
 			<br> <br> <input type="submit"

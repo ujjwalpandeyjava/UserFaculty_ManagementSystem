@@ -53,7 +53,6 @@ public class DeleteUserServlet extends HttpServlet {
 			}
 			response.sendRedirect("adminViewUsers.jsp?whoUser=" + utype2 + "");
 			// response.sendRedirect("adminViewCourses.jsp");
-			System.out.println("Redirected succes.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

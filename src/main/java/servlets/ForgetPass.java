@@ -21,7 +21,6 @@ public class ForgetPass extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String uEmail = request.getParameter("uEmail");
-		System.out.println(uEmail);
 		Session openSession = DBConnection.getFactory().openSession();
 		UserDetails persist = openSession.get(UserDetails.class, uEmail);
 		openSession.close();

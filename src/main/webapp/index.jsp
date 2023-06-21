@@ -21,48 +21,65 @@
 	//path = path +"\\WEB-INF" ;
 	String newPath =path + "imges" + File.separator + "uploadedImages" + File.separator + "profilePicture" + File.separator
 			+ "crios.png";
-	System.out.println(newPath);
 	%> 
 <img alt="aa" src="<%=newPath %>">--%>
 	<%@include file="common/navbar.jsp"%>
 	<div class="jumbotron m-3 fs-4">
 		<div class="primary-container">
 			<div class="section section-1 text-center">
-				<h1 style="color: #fb8c00; margin-top: 0px; margin-bottom: -20px; font-family: 'Belleza'; font-weight: bold;">Our Latest Course</h1>
+				<h1
+					style="color: #fb8c00; margin-top: 0px; margin-bottom: -20px; font-family: 'Belleza'; font-weight: bold;">Our
+					Latest Course</h1>
 				<%
 				Session sess = DBConnection.getFactory().openSession();
 				sess.beginTransaction();
 				Query query = sess.createQuery("from CourseList ORDER BY courseAddedDate desc");
 				query.setFirstResult(0);
 				query.setMaxResults(5);
-				List<CourseList> col1 = query.list();//will return the records from 5 to 10th number
+				List<CourseList> col1 = query.list(); //will return the records from 5 to 10th number
 				Iterator<CourseList> itr1 = col1.iterator();
-				if(itr1.hasNext()) {
-					CourseList cl = itr1.next();
 				%>
 				<hr>
 				<div class="rows">
+					<%
+					if (itr1.hasNext()) {
+						CourseList cl = itr1.next();
+					%>
 					<div class="of2">
-						<div class="imagediv"><img src="imges/coursesPic/<%=cl.getCourseImage()%>" alt="New Batch, join fast"><br></div>
-						<div><p>
+						<div class="imagediv">
+							<img src="imges/coursesPic/<%=cl.getCourseImage()%>"
+								alt="New Batch, join fast"><br>
+						</div>
+						<div>
+							<p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
 								<%
 								String desc2 = cl.getCouseDescription();
 								if (desc2.length() > 100)
 									desc2 = (String) desc2.substring(0, 100).concat("...click more details");
-							  	else
+								else
 									desc2 = (String) desc2;
 								%>
 								<%=desc2%>
-								<br><a class="btn btn-info px-3 float-right" role="button"
-									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More Detail</a>
-						</p></div>
+								<br>
+								<a class="btn btn-info px-3 float-right" role="button"
+									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More
+									Detail</a>
+							</p>
+						</div>
 					</div>
-					<% cl = itr1.next(); %>
+					<%
+					if (itr1.hasNext()) {
+						cl = itr1.next();
+					%>
 					<div class="of2">
-						<div class="imagediv"><img src="imges/batches/new_batch2.jpg" alt="New Batch, join fast"><br></div>
-						<div><p>
+						<div class="imagediv">
+							<img src="imges/batches/new_batch2.jpg"
+								alt="New Batch, join fast"><br>
+						</div>
+						<div>
+							<p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
 								<%
@@ -70,13 +87,21 @@
 								if (desc.length() > 100)
 									desc = (String) desc.substring(0, 100);
 								else
-									desc = (String) desc; %>
-								<%=desc%> <br>
+									desc = (String) desc;
+								%>
+								<%=desc%>
+								<br>
 								<a class="btn btn-info px-3 float-right"
 									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>"
 									role="button">More Detail</a>
-						</p></div>
+						</p>
+						</div>
 					</div>
+					<%
+					}
+					} else {
+					%>
+					<h3>No course added Yet!</h3>
 					<%
 					}
 					sess.getTransaction().commit();
@@ -97,7 +122,7 @@
 								<strong>Teaching: </strong>Front-end Web Development<br>
 								<strong>Description: </strong>Learn how to develop the web with
 								the help of HTML, CSS, JavaScript, React, Bootstrap, etc<br>
-								Batch Days: MWF <br> <sub class="text-muted">Things
+								<strong>Batch Days:</strong> MWF <br> <sub class="text-muted">Things
 									are flexible before starting the batch, take your step and bend
 									them according to your suits</sub><br> <a
 									class="btn btn-info px-3 float-right" role="button"
@@ -115,7 +140,8 @@
 							<p>
 								<strong>Subject: </strong>Full Stack Development<br>
 								<strong>Description: </strong>How to use HTML, CSS, JavaScript,
-								Java, Advanced Java, SQL, etc...<br>Batch Days: TTS <br>
+								Java, Advanced Java, SQL, etc...<br>
+								<strong>Batch Days:</strong> TTS<br>
 								<sub class="text-muted">Things are flexible before
 									starting the batch, take your step and bend them according to
 									your suitability</sub><br> <a

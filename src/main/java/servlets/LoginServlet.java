@@ -6,6 +6,7 @@ import org.hibernate.Session;
 
 import connection.DBConnection;
 import entities.UserDetails;
+import enums.UserType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -36,11 +37,11 @@ public class LoginServlet extends HttpServlet {
 			if (userDetails.getPassword().equals(password)) {
 				logedInDetails = request.getSession();
 				logedInDetails.setAttribute("logedInUser", userDetails);
-				if (userDetails.getUserType().equals("student")) {
+				if (userDetails.getUserType().equals(UserType.LEARNER.getUserType())) {
 					response.sendRedirect("student.jsp");
-				} else if (userDetails.getUserType().equals("faculty"))
+				} else if (userDetails.getUserType().equals(UserType.FACULTY.getUserType()))
 					response.sendRedirect("faculty.jsp");
-				else if (userDetails.getUserType().equals("admin"))
+				else if (userDetails.getUserType().equals(UserType.SUPERADMIN.getUserType()))
 					response.sendRedirect("admin.jsp");
 			} else {
 				sess.getTransaction().rollback();

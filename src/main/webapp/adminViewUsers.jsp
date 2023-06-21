@@ -1,4 +1,5 @@
 
+<%@page import="enums.UserType"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Query"%>
@@ -7,7 +8,7 @@
 <%@page import="org.hibernate.Session"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (userDetails1.getUserType().equals("student"))) {
+if ((userDetails1 == null) || (userDetails1.getUserType().equals( UserType.LEARNER.getUserType()))) {
 	session.setAttribute("login-failed",
 	"Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
@@ -81,7 +82,7 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals("student"))) {
 					<th scope="col">Address</th>
 					<th scope="col">With us from</th>
 					<%
-					if (userDetails.getUserType().equals("admin")) {
+					if (userDetails.getUserType().equals(UserType.SUPERADMIN.getUserType())) {
 					%>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
@@ -104,7 +105,7 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals("student"))) {
 					<td><%=element.getRegistraionDate()%></td>
 
 					<%
-					if (userDetails.getUserType().equals("admin")) {
+					if (userDetails.getUserType().equals(UserType.SUPERADMIN.getUserType())) {
 					%>
 					<td><a type="button" class="btn btn-primary"
 						href="updateUser.jsp?userId=<%=element.getEmail()%>">Update</a></td>
