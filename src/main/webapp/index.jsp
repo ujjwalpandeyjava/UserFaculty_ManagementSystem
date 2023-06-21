@@ -15,7 +15,6 @@
 <title>Developers' Point | IGNOU PROJECT</title>
 </head>
 <body>
-
 	<%-- <%
 	ServletContext context = request.getServletContext();
 	String path = context.getRealPath("/");
@@ -29,74 +28,57 @@
 	<div class="jumbotron m-3 fs-4">
 		<div class="primary-container">
 			<div class="section section-1 text-center">
-				<h1
-					style="color: #fb8c00; margin-top: 0px; margin-bottom: -20px; font-family: 'Belleza'; font-weight: bold;">Our
-					Latest Course</h1>
+				<h1 style="color: #fb8c00; margin-top: 0px; margin-bottom: -20px; font-family: 'Belleza'; font-weight: bold;">Our Latest Course</h1>
 				<%
 				Session sess = DBConnection.getFactory().openSession();
 				sess.beginTransaction();
 				Query query = sess.createQuery("from CourseList ORDER BY courseAddedDate desc");
 				query.setFirstResult(0);
-				query.setMaxResults(3);
+				query.setMaxResults(5);
 				List<CourseList> col1 = query.list();//will return the records from 5 to 10th number
 				Iterator<CourseList> itr1 = col1.iterator();
-				CourseList cl = itr1.next();
+				if(itr1.hasNext()) {
+					CourseList cl = itr1.next();
 				%>
 				<hr>
 				<div class="rows">
 					<div class="of2">
-						<div class="imagediv">
-							<img src="imges/coursesPic/<%=cl.getCourseImage()%>"
-								alt="New Batch, join fast"> <br>
-						</div>
-						<div>
-							<p>
+						<div class="imagediv"><img src="imges/coursesPic/<%=cl.getCourseImage()%>" alt="New Batch, join fast"><br></div>
+						<div><p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
-
 								<%
 								String desc2 = cl.getCouseDescription();
-								if (desc2.length() > 100) {
+								if (desc2.length() > 100)
 									desc2 = (String) desc2.substring(0, 100).concat("...click more details");
-								} else
+							  	else
 									desc2 = (String) desc2;
 								%>
 								<%=desc2%>
-								<br> <a class="btn btn-info px-3 float-right" role="button"
-									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More
-									Detail</a>
-							</p>
-						</div>
+								<br><a class="btn btn-info px-3 float-right" role="button"
+									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More Detail</a>
+						</p></div>
 					</div>
-					<%
-					cl = itr1.next();
-					%>
+					<% cl = itr1.next(); %>
 					<div class="of2">
-						<div class="imagediv">
-							<img src="imges/batches/new_batch2.jpg"
-								alt="New Batch, join fast"> <br>
-						</div>
-						<div>
-							<p>
+						<div class="imagediv"><img src="imges/batches/new_batch2.jpg" alt="New Batch, join fast"><br></div>
+						<div><p>
 								<b>Title:</b>
 								<%=cl.getCourseName()%><br> <b>Description:</b>
-
-
 								<%
 								String desc = cl.getCouseDescription();
-								if (desc.length() > 100) {
+								if (desc.length() > 100)
 									desc = (String) desc.substring(0, 100);
-								} else
-									desc = (String) desc;
-								%>
-								<%=desc%>
-								<br> <a class="btn btn-info px-3 float-right"
+								else
+									desc = (String) desc; %>
+								<%=desc%> <br>
+								<a class="btn btn-info px-3 float-right"
 									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>"
 									role="button">More Detail</a>
-							</p>
-						</div>
+						</p></div>
 					</div>
 					<%
+					}
 					sess.getTransaction().commit();
 					sess.close();
 					%>
@@ -239,7 +221,6 @@
 				</footer>
 			</div>
 		</div>
-
 	</div>
 	<%@include file="common/footer.jsp"%>
 	<script type="text/javascript">
