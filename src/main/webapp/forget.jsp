@@ -121,8 +121,7 @@ input[type="submit"]:hover {
 							password</sup> <br> <br>
 						<section>
 							<label>&emsp;Enter Registered E-mail:</label> <br> <input
-								type="email" placeholder="Mail-id" name="emailPassReset"
-								>
+								type="email" placeholder="Mail-id" name="emailPassReset">
 						</section>
 						<br>
 						<section>
@@ -140,8 +139,8 @@ input[type="submit"]:hover {
 						}
 						session.removeAttribute("resetProbCause");
 						%>
-						<br> <sup> Never add fake detail</sup><br> <br> <input
-							type="submit" value="Submit" onclick="waitmsg()">
+						<br>Note: <sub>Never add fake detail</sub><br><br>
+						<input type="submit" value="Submit" onclick="waitmsg()">
 					</form>
 				</div>
 			</div>
@@ -149,8 +148,9 @@ input[type="submit"]:hover {
 	</div>
 	<script type="text/javascript">
 		function waitmsg() {
-			alert("Click ok, and Wait few sec, we are fetching your details!!")
-		}
+		    setTimeout(() => {
+				alert("Click ok, and Wait few sec, we are fetching your details!!")
+		    }, 500);
 	</script>
 	<%@include file="common/footer.jsp"%>
 </body>

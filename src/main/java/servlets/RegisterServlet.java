@@ -20,6 +20,7 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import connection.DBConnection;
 import entities.UserDetails;
+import enums.MailDetails;
 import enums.UserType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -120,8 +121,10 @@ public class RegisterServlet extends HttpServlet {
 		prop.setProperty("mail.smtp.port", "587");
 
 		// Sender
-		final String myAddress = "ujjwalpandey.apps@gmail.com";
-		final String pass = "Goldenstar@123";
+		/*final String myAddress = "ujjwalpandey.aps@gmail.com";
+		final String pass = "esejextamtqoknpd";*/
+		final String myAddress = MailDetails.FROM.getValue();
+		final String pass = MailDetails.CODE.getValue();
 
 		javax.mail.Session sess = javax.mail.Session.getInstance(prop, new Authenticator() {
 			@Override

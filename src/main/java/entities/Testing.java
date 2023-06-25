@@ -13,19 +13,20 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import enums.MailDetails;
 import servlets.Validate_code_source;
 
 public class Testing {
 
 	public static void main(String[] args) throws MessagingException {
-		createMail("ujjwalpandey.aps@gmail.com");
+		createMail("ujjwalpandey.dev@gmail.com");
 	}
+
 	public static void createMail(String receipent) {
 
 		String validateEmailApache = validateEmailApache(receipent);
 		System.out.println(validateEmailApache);
-		
-		
+
 		boolean obj = Validate_code_source.isAddressValid(receipent);
 		System.out.println("mail id exixt? " + obj);
 		Properties prop = new Properties();
@@ -35,8 +36,8 @@ public class Testing {
 		prop.setProperty("mail.smtp.port", "587");
 
 		// Sender
-		final String myAddress = "ujjwalpandey.apps@gmail.com";
-		final String pass = "Goldenstar@123";
+		final String myAddress = MailDetails.FROM.getValue();
+		final String pass = MailDetails.CODE.getValue();
 
 		Session sess = Session.getInstance(prop, new Authenticator() {
 			@Override
@@ -55,20 +56,17 @@ public class Testing {
 
 	}
 
-	private static Message prepareMessage(Session sess, String myAddress,
-			String receipent) {
+	private static Message prepareMessage(Session sess, String myAddress, String receipent) {
 		try {
 			Message mess = new MimeMessage(sess);
 			mess.setFrom(new InternetAddress(myAddress));
-			mess.setRecipient(Message.RecipientType.TO,
-					new InternetAddress(receipent));
+			mess.setRecipient(Message.RecipientType.TO, new InternetAddress(receipent));
 			mess.setSubject("This is subject");
 			// mess.setText("This is going to be the body.");
 			String mailBody = "<center><div class=\"forget-tip-form \">\r\n"
 					+ "			<h2 class=\"text-center my-4 \">\r\n"
-					+ "				<i class=\"fa fa-question\"></i> Forgot password\r\n"
-					+ "			</h2>\r\n" + "</div></center>"
-					+ "hii moti this message is sent automatically";
+					+ "				<i class=\"fa fa-question\"></i> Forgot password\r\n" + "			</h2>\r\n"
+					+ "</div></center>" + "hii moti this message is sent automatically";
 			mess.setContent(mailBody, "text/html");
 			return mess;
 		} catch (MessagingException e) {
@@ -77,6 +75,7 @@ public class Testing {
 		}
 		return null;
 	}
+
 	public static String validateEmailApache(String email) {
 		email = email.trim();
 		EmailValidator eValidator = EmailValidator.getInstance();
