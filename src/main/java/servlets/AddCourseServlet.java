@@ -3,16 +3,15 @@ package servlets;
 import java.io.IOException;
 import java.util.Date;
 
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
 import org.hibernate.Session;
 
 import connection.DBConnection;
 import entities.CourseList;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class AddCourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,8 +20,8 @@ public class AddCourseServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String title = (String) request.getParameter("cTitle");
 		String description = (String) request.getParameter("cExplination");
@@ -34,7 +33,7 @@ public class AddCourseServlet extends HttpServlet {
 		Session sess = DBConnection.getFactory().openSession();
 		sess.beginTransaction();
 
-		sess.save(cl);
+		sess.persist(cl);
 
 		sess.getTransaction().commit();
 		sess.close();

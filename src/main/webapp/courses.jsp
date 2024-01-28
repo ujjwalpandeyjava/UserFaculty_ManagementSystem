@@ -1,8 +1,6 @@
 
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
-<%@page import="org.hibernate.Query"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="org.hibernate.Criteria"%>
 <%@page import="java.util.List"%>
 <%@page import="entities.CourseList"%>
 <%@page import="org.hibernate.Session"%>
@@ -37,8 +35,7 @@
 	<%
 	Session sess = DBConnection.getFactory().openSession();
 	sess.beginTransaction();
-	Criteria criteria = sess.createCriteria(CourseList.class);
-	List<CourseList> col = criteria.list();
+	List<CourseList> col = sess.createQuery("SELECT cl FROM CourseList cl", CourseList.class).getResultList();
 	%>
 	<div class="container-fluid my-4 overflow-auto">
 		<h2 class="display-4 text-center">Course</h2>

@@ -1,11 +1,12 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table
@@ -47,7 +48,7 @@ public class UserDetails {
 
 	@Column(nullable = true)
 	private String pinCode;
-	
+
 	@Column(nullable = true)
 	private String imagePath;
 
@@ -156,14 +157,13 @@ public class UserDetails {
 	}
 
 	public void setRegistraionDate(Date registerDate) {
-		SimpleDateFormat formatter = new SimpleDateFormat(
-				"dd-MM-yyyy, HH:mm:ss");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy, HH:mm:ss");
 		this.registraionDate = formatter.format(registerDate);
 	}
 
-	//Used while registration
-	public UserDetails(String firstName, String lastName, String email,
-			String password, Date registraionDate, String userType) {
+	// Used while registration
+	public UserDetails(String firstName, String lastName, String email, String password, Date registraionDate,
+			String userType) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -174,9 +174,9 @@ public class UserDetails {
 		this.registraionDate = this.getRegistraionDate();
 	}
 
-	public UserDetails(String email, String firstName, String lastName,
-			String password, String contactNumber, String userType, String houseNo,
-			String landMark, String city, String state, String pinCode,String imagePath) {
+	public UserDetails(String email, String firstName, String lastName, String password, String contactNumber,
+			String userType, String houseNo, String landMark, String city, String state, String pinCode,
+			String imagePath) {
 		super();
 		this.email = email;
 		this.firstName = firstName;
@@ -197,18 +197,16 @@ public class UserDetails {
 	}
 
 	public String toStringFullAddress() {
-		return "Address:- " + getHouseNo() + ", " + getLandMark() + ", "
-				+ getCity() + ", " + getState() + " " + getPinCode();
+		return "Address:- " + getHouseNo() + ", " + getLandMark() + ", " + getCity() + ", " + getState() + " "
+				+ getPinCode();
 	}
 
 	@Override
 	public String toString() {
-		return "UserDetails [email=" + email + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", password=" + password
-				+ ", contactNumber=" + contactNumber + ", registraionDate="
-				+ registraionDate + ", userType=" + userType + ", houseNo="
-				+ houseNo + ", landMark=" + landMark + ", city=" + city
-				+ ", state=" + state + ", pinCode=" + pinCode +" image path: " +imagePath + " ]";
+		return "UserDetails [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", password="
+				+ password + ", contactNumber=" + contactNumber + ", registraionDate=" + registraionDate + ", userType="
+				+ userType + ", houseNo=" + houseNo + ", landMark=" + landMark + ", city=" + city + ", state=" + state
+				+ ", pinCode=" + pinCode + " image path: " + imagePath + " ]";
 	}
 
 }

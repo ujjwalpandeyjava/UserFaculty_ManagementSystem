@@ -1,13 +1,11 @@
 <%@page import="enums.UserType"%>
-<%@page import="org.hibernate.Query"%>
 <%@page import="entities.CourseList"%>
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
 if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPERADMIN.getUserType()))) {
-	session.setAttribute("login-failed",
-	"Only Admins can access this page.\n Login as admin");
+	session.setAttribute("login-failed", "Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
 	//response.sendRedirect("login.jsp");
 }

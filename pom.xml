@@ -16,45 +16,58 @@
 			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Allow jsp in project
-		https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+
+		<!-- Allow jsp -->
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core (old - 5.3.19)-->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>6.0.8</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		
+		<!-- MySQL Connector-->
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.19</version>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.3.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<!-- hibernate-->
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.4.24.Final</version>
+			<version>6.4.2.Final</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>5.0.0-beta3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>font-awesome</artifactId>
 			<version>5.15.2</version>
 		</dependency>
+
 		<!-- Email sending -->
 		<dependency>
 			<groupId>javax.mail</groupId>

@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Properties;
 
@@ -41,7 +40,6 @@ public class RegisterServlet extends HttpServlet {
 		return eValidator.isValid(email);
 	}
 
-	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = null;
@@ -76,7 +74,7 @@ public class RegisterServlet extends HttpServlet {
 
 						// Create a transaction from the session.
 						Transaction tr = sess.beginTransaction();
-						Serializable iddd = sess.save(uDetails);
+						sess.persist(uDetails);
 						tr.commit();
 						sess.close();
 
@@ -89,7 +87,7 @@ public class RegisterServlet extends HttpServlet {
 						uDetails = new UserDetails(uFirstName, uLastName, uEmail, uPassword, new Date(),
 								UserType.LEARNER.getUserType());
 						Transaction tr = sess.beginTransaction();
-						Serializable iddd = sess.save(uDetails);
+						sess.persist(uDetails);
 						tr.commit();
 						sess.close();
 						session = request.getSession();
@@ -100,7 +98,7 @@ public class RegisterServlet extends HttpServlet {
 				}
 			}
 		} catch (ConstraintViolationException cve) {
-			System.out.println("Duplicate maal");
+			System.out.println("Duplicate detail");
 		} catch (Exception e) {
 			System.out.println("2nd exception is thrown\n");
 			e.printStackTrace();
@@ -121,8 +119,10 @@ public class RegisterServlet extends HttpServlet {
 		prop.setProperty("mail.smtp.port", "587");
 
 		// Sender
-		/*final String myAddress = "ujjwalpandey.aps@gmail.com";
-		final String pass = "esejextamtqoknpd";*/
+		/*
+		 * final String myAddress = "ujjwalpandey.aps@gmail.com"; final String pass =
+		 * "esejextamtqoknpd";
+		 */
 		final String myAddress = MailDetails.FROM.getValue();
 		final String pass = MailDetails.CODE.getValue();
 

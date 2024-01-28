@@ -2,15 +2,13 @@
 <%@page import="enums.UserType"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="java.util.List"%>
-<%@page import="org.hibernate.Query"%>
 <%@page import="entities.CourseList"%>
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
-if ((userDetails1 == null) || (userDetails1.getUserType().equals( UserType.LEARNER.getUserType()))) {
-	session.setAttribute("login-failed",
-	"Only Admins can access this page.\n Login as admin");
+if ((userDetails1 == null) || (userDetails1.getUserType().equals(UserType.LEARNER.getUserType()))) {
+	session.setAttribute("login-failed", "Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
 }
 %><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -22,6 +20,19 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals( UserType.LEARN
 <link rel="stylesheet" type="text/css" href="stylesheet/register.css">
 <title>Admin View users | DevelpersPoint</title>
 </head>
+<Style>
+.userTypeView {
+	word-break: break-all;
+	text-decoration: underline dashed;
+	text-underline-offset: 2px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.userTypeView:hover {
+	background-color: #e6e5e5 !important;
+}
+</Style>
 <body>
 	<%@include file="common/navbar.jsp"%>
 	<%
@@ -36,8 +47,7 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals( UserType.LEARN
 	} else if (userType.equals("student")) {
 		hql = "From UserDetails where userType = 'student'";
 	}
-	Query<UserDetails> query = sess.createQuery(hql);
-	List<UserDetails> userList = query.list();
+	List<UserDetails> userList = sess.createQuery(hql, UserDetails.class).getResultList();
 	%>
 	<!-- Table -->
 	<div class="container-fluid my-4 overflow-auto">
@@ -80,13 +90,12 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals( UserType.LEARN
 					<th scope="col">User Type</th>
 					<th scope="col">Contact</th>
 					<th scope="col">Address</th>
-					<th scope="col">With us from</th>
+					<th scope="col">Registered on</th>
 					<%
 					if (userDetails.getUserType().equals(UserType.SUPERADMIN.getUserType())) {
 					%>
 					<th scope="col">Edit</th>
 					<th scope="col">Delete</th>
-
 					<%
 					}
 					%>
@@ -99,7 +108,7 @@ if ((userDetails1 == null) || (userDetails1.getUserType().equals( UserType.LEARN
 				<tr>
 					<th scope="row"><%=element.getFullName()%></th>
 					<td style="word-break: break-all;"><%=element.getEmail()%></td>
-					<td style="word-break: break-all;"><%=element.getUserType()%></td>
+					<td class="userTypeView"><%=element.getUserType()%></td>
 					<td><%=element.getContactNumber()%></td>
 					<td><%=element.toStringFullAddress()%></td>
 					<td><%=element.getRegistraionDate()%></td>

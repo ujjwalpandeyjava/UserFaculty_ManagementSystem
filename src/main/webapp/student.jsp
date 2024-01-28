@@ -3,8 +3,7 @@
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
 if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.LEARNER.getUserType()))) {
-	session.setAttribute("login-failed",
-	"To acess this page login as a student first");
+	session.setAttribute("login-failed", "To acess this page login as a student first");
 	response.sendRedirect("LogoutServlet");
 	//response.sendRedirect("login.jsp");
 }
@@ -12,7 +11,6 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.LEARN
 <%@page import="java.util.Iterator"%>
 <%@page import="entities.CourseList"%>
 <%@page import="java.util.List"%>
-<%@page import="org.hibernate.Criteria"%>
 <%@page import="entities.BoughtCourses"%>
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
@@ -43,8 +41,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.LEARN
 	<%
 	Session sess = DBConnection.getFactory().openSession();
 	sess.beginTransaction();
-	Criteria criteria = sess.createCriteria(BoughtCourses.class);
-	List<BoughtCourses> col = criteria.list();
+	List<BoughtCourses> col = sess.createQuery("SELECT bc FROM BoughtCourses bc", BoughtCourses.class).getResultList();
 	%>
 	<div class="row" style="min-height: 78vh; width: 100vw;">
 		<div class="col-xs-12 p-1 col-md-8">

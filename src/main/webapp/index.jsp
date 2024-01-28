@@ -2,7 +2,6 @@
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="org.hibernate.Query"%>
 <%@page import="entities.CourseList"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -33,10 +32,9 @@
 				<%
 				Session sess = DBConnection.getFactory().openSession();
 				sess.beginTransaction();
-				Query query = sess.createQuery("from CourseList ORDER BY courseAddedDate desc");
-				query.setFirstResult(0);
-				query.setMaxResults(5);
-				List<CourseList> col1 = query.list(); //will return the records from 5 to 10th number
+				List<CourseList> col1 = sess
+						.createQuery("Select cl from CourseList cl ORDER BY courseAddedDate desc limit 2 offset 1", CourseList.class)
+						.getResultList();
 				Iterator<CourseList> itr1 = col1.iterator();
 				%>
 				<hr>
@@ -62,8 +60,7 @@
 									desc2 = (String) desc2;
 								%>
 								<%=desc2%>
-								<br>
-								<a class="btn btn-info px-3 float-right" role="button"
+								<br> <a class="btn btn-info px-3 float-right" role="button"
 									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>">More
 									Detail</a>
 							</p>
@@ -90,11 +87,10 @@
 									desc = (String) desc;
 								%>
 								<%=desc%>
-								<br>
-								<a class="btn btn-info px-3 float-right"
+								<br> <a class="btn btn-info px-3 float-right"
 									href="courseDetail.jsp?courseId=<%=cl.getCourseID()%>"
 									role="button">More Detail</a>
-						</p>
+							</p>
 						</div>
 					</div>
 					<%
@@ -119,11 +115,11 @@
 						</div>
 						<div class="text-left">
 							<p class="text-left">
-								<strong>Teaching: </strong>Front-end Web Development<br>
-								<strong>Description: </strong>Learn how to develop the web with
-								the help of HTML, CSS, JavaScript, React, Bootstrap, etc<br>
-								<strong>Batch Days:</strong> MWF <br> <sub class="text-muted">Things
-									are flexible before starting the batch, take your step and bend
+								<strong>Teaching: </strong>Front-end Web Development<br> <strong>Description:
+								</strong>Learn how to develop the web with the help of HTML, CSS,
+								JavaScript, React, Bootstrap, etc<br> <strong>Batch
+									Days:</strong> MWF <br> <sub class="text-muted">Things are
+									flexible before starting the batch, take your step and bend
 									them according to your suits</sub><br> <a
 									class="btn btn-info px-3 float-right" role="button"
 									onclick="batchCourseEnquary()" href="contact.jsp">More
@@ -138,15 +134,14 @@
 						</div>
 						<div>
 							<p>
-								<strong>Subject: </strong>Full Stack Development<br>
-								<strong>Description: </strong>How to use HTML, CSS, JavaScript,
-								Java, Advanced Java, SQL, etc...<br>
-								<strong>Batch Days:</strong> TTS<br>
-								<sub class="text-muted">Things are flexible before
-									starting the batch, take your step and bend them according to
-									your suitability</sub><br> <a
-									class="btn btn-info px-3 float-right" href="contact.jsp"
-									onclick="batchCourseEnquary()" role="button">More Detail</a>
+								<strong>Subject: </strong>Full Stack Development<br> <strong>Description:
+								</strong>How to use HTML, CSS, JavaScript, Java, Advanced Java, SQL,
+								etc...<br> <strong>Batch Days:</strong> TTS<br> <sub
+									class="text-muted">Things are flexible before starting
+									the batch, take your step and bend them according to your
+									suitability</sub><br> <a class="btn btn-info px-3 float-right"
+									href="contact.jsp" onclick="batchCourseEnquary()" role="button">More
+									Detail</a>
 							</p>
 						</div>
 					</div>
@@ -250,9 +245,9 @@
 	</div>
 	<%@include file="common/footer.jsp"%>
 	<script type="text/javascript">
-	function batchCourseEnquary() {
-	    alert("Feel free to ask anything, and sit back freely we will reach you in 25min");
-	}
-    </script>
+		function batchCourseEnquary() {
+			alert("Feel free to ask anything, and sit back freely we will reach you in 25min");
+		}
+	</script>
 </body>
 </html>

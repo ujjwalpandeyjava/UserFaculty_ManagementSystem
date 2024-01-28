@@ -3,15 +3,13 @@
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
 if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.FACULTY.getUserType()))) {
-	session.setAttribute("login-failed",
-	"Only a faculty can acess this page. Login as faculty");
+	session.setAttribute("login-failed", "Only a faculty can acess this page. Login as faculty");
 	response.sendRedirect("LogoutServlet");
 	//response.sendRedirect("login.jsp");
 }
 %>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="org.hibernate.Criteria"%>
 <%@page import="entities.BoughtCourses"%>
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
@@ -62,8 +60,7 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.FACUL
 	<%
 	Session sess = DBConnection.getFactory().openSession();
 	sess.beginTransaction();
-	Criteria criteria = sess.createCriteria(BoughtCourses.class);
-	List<BoughtCourses> col = criteria.list();
+	List<BoughtCourses> col = sess.createQuery("SELECT bc FROM BoughtCourses bc", BoughtCourses.class).getResultList();
 	%>
 	<div class="row" style="width: 100vw; padding-bottom: 30px;">
 		<div class="col-xs-12 col-md-8" style="padding-left: 22px;">

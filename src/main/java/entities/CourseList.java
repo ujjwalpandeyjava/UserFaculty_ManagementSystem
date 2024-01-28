@@ -1,7 +1,15 @@
 package entities;
 
-import javax.persistence.*;
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table
@@ -150,8 +158,8 @@ public class CourseList {
 	public CourseList() {
 	}
 
-	public CourseList(String courseName, String couseDescription,
-			String courseImage, int coursePrice, Date courseAddedDate) {
+	public CourseList(String courseName, String couseDescription, String courseImage, int coursePrice,
+			Date courseAddedDate) {
 		super();
 		this.courseName = courseName;
 		this.couseDescription = couseDescription;
@@ -160,17 +168,15 @@ public class CourseList {
 		this.courseAddedDate = courseAddedDate;
 	}
 
-	public CourseList(String courseName, String couseDescription,
-			int coursePrice) {
+	public CourseList(String courseName, String couseDescription, int coursePrice) {
 		super();
 		this.courseName = courseName;
 		this.couseDescription = couseDescription;
 		this.coursePrice = coursePrice;
 	}
 
-	public CourseList(int courseID, String courseName, String couseDescription,
-			int coursePrice, Date updatedCourseDate, int discount, String level,
-			String learnTime, String creatorName, String requirements,
+	public CourseList(int courseID, String courseName, String couseDescription, int coursePrice, Date updatedCourseDate,
+			int discount, String level, String learnTime, String creatorName, String requirements,
 			int moneyBackGuaranteeDays, String lang, String language) {
 		super();
 		this.courseID = courseID;
@@ -190,15 +196,11 @@ public class CourseList {
 
 	@Override
 	public String toString() {
-		return "CourseList [courseID=" + courseID + ", courseName=" + courseName
-				+ ", couseDescription=" + couseDescription + ", courseImage="
-				+ courseImage + ", coursePrice=" + coursePrice
-				+ ", courseAddedDate=" + courseAddedDate
-				+ ", updatedCourseDate=" + updatedCourseDate + ", discount="
-				+ discount + ", level=" + level + ", learnTime=" + learnTime
-				+ ", creatorName=" + creatorName + ", requirements="
-				+ requirements + ", moneyBackGuaranteeDays="
-				+ moneyBackGuaranteeDays + ", lang=" + lang + ", language="
-				+ language + "]";
+		return "CourseList [courseID=" + courseID + ", courseName=" + courseName + ", couseDescription="
+				+ couseDescription + ", courseImage=" + courseImage + ", coursePrice=" + coursePrice
+				+ ", courseAddedDate=" + courseAddedDate + ", updatedCourseDate=" + updatedCourseDate + ", discount="
+				+ discount + ", level=" + level + ", learnTime=" + learnTime + ", creatorName=" + creatorName
+				+ ", requirements=" + requirements + ", moneyBackGuaranteeDays=" + moneyBackGuaranteeDays + ", lang="
+				+ lang + ", language=" + language + "]";
 	}
 }

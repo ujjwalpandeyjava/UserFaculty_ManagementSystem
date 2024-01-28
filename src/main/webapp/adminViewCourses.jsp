@@ -1,8 +1,6 @@
 <%@page import="enums.UserType"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
-<%@page import="org.hibernate.Query"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="org.hibernate.Criteria"%>
 <%@page import="java.util.List"%>
 <%@page import="entities.CourseList"%>
 <%@page import="org.hibernate.Session"%>
@@ -10,8 +8,7 @@
 <%
 UserDetails userDetails1 = (UserDetails) session.getAttribute("logedInUser");
 if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPERADMIN.getUserType()))) {
-	session.setAttribute("login-failed",
-	"Only Admins can access this page.\n Login as admin");
+	session.setAttribute("login-failed", "Only Admins can access this page.\n Login as admin");
 	response.sendRedirect("LogoutServlet");
 	//response.sendRedirect("login.jsp");
 }
@@ -28,11 +25,12 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPER
 	<%
 	Session sess = DBConnection.getFactory().openSession();
 	sess.beginTransaction();
-	Criteria criteria = sess.createCriteria(CourseList.class);
-	List<CourseList> col = criteria.list();
+	List<CourseList> col = sess.createQuery("SELECT a FROM CourseList a", CourseList.class).getResultList();
 	%>
 	<div class="container-fluid my-4 overflow-auto">
-	<% if(!col.isEmpty()) { %>
+		<%
+		if (!col.isEmpty()) {
+		%>
 		<table class="table table-hover">
 			<thead class="thead-light">
 				<h2 class="display-4 text-center">Course</h2>
@@ -83,9 +81,13 @@ if ((userDetails1 == null) || (!userDetails1.getUserType().equals(UserType.SUPER
 				%>
 			</tbody>
 		</table>
-	<% } else { %>
-	<h2 align="center">No course added yet!</h2>
-	<% } %>
+		<%
+		} else {
+		%>
+		<h2 align="center">No course added yet!</h2>
+		<%
+		}
+		%>
 	</div>
 	<!-- Closing the page data loading-->
 	<%

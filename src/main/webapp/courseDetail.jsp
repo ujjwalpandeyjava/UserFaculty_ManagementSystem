@@ -1,5 +1,4 @@
 <%@page import="entities.CourseList"%>
-<%@page import="org.hibernate.Criteria"%>
 <%@page import="connection.DBConnection"%>
 <%@page import="org.hibernate.Session"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
